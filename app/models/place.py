@@ -1,4 +1,4 @@
-from base_model import BaseModel
+from app.models.base_model import BaseModel
 
 
 class Place(BaseModel):
@@ -24,7 +24,7 @@ class Place(BaseModel):
     def is_valid(self):
         try:
             if not all(isinstance(attr, str) for attr in [self.title, self.description]):
-                raise TypeError("email, first_name, and last_name must be strings (str).")
+                raise TypeError("title and description must be strings (str).")
             
             if self.price < 0:
                 raise ValueError("price must be a positiv value")
@@ -33,13 +33,15 @@ class Place(BaseModel):
                 raise ValueError("title must be less than 100 characters.")
             
             if not all(isinstance(attr, float) for attr in [self.price, self.latitude, self.longitude]):
-                raise TypeError("email, first_name, and last_name must be strings (str).")
+                raise TypeError("pricel, latitude, and longitude must be floats (float).")
 
             if self.latitude > 90 or self.latitude < -90:
                 raise ValueError("Must be within the range of -90.0 to 90.0")
             
             if self.longitude > 180 or self.latitude < -180:
                 raise ValueError("Must be within the range of -90.0 to 90.0")
+            
+            return True
 
         except TypeError as te:
             print(f"Type error: {str(te)}")

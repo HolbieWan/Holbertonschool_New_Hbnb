@@ -1,4 +1,4 @@
-from base_model import BaseModel
+from app.models.base_model import BaseModel
 from place import Place
 from user import User
 
@@ -27,6 +27,8 @@ class Review(BaseModel):
         
             if not isinstance(self.user, User):
                 raise TypeError("place must be an instance of class(User)")
+            
+            return True
 
         except TypeError as te:
             print(f"Type error: {str(te)}")

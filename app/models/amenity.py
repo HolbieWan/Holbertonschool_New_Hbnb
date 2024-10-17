@@ -1,4 +1,4 @@
-from base_model import BaseModel
+from app.models.base_model import BaseModel
 
 
 class Amenity(BaseModel):
@@ -13,6 +13,8 @@ class Amenity(BaseModel):
             
             if len(self.name) > 50:
                 raise ValueError("title must be less than 50 characters.")
+            
+            return True
             
         except TypeError as te:
             print(f"Type error: {str(te)}")

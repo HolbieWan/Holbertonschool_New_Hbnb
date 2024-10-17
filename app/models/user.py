@@ -1,4 +1,4 @@
-from base_model import BaseModel
+from app.models.base_model import BaseModel
 from email_validator import validate_email, EmailNotValidError
 
 
@@ -17,20 +17,22 @@ class User(BaseModel):
     def is_valid(self):
         try:
             if not all(isinstance(attr, str) for attr in [self.email, self.first_name, self.last_name]):
+                print("Validation failed: First name, last name, or email is not a string.")
                 raise TypeError("email, first_name, and last_name must be strings (str).")
-            
+
             if len(self.first_name) > 50 or len(self.last_name) > 50:
+                print("Validation failed: First name or last name exceeds 50 characters.")
                 raise ValueError("first_name and last_name must be less than 50 characters.")
 
             valid = validate_email(self.email)
-            return valid.email
+            return True
 
         except TypeError as te:
             print(f"Type error: {str(te)}")
             return False
         
         except EmailNotValidError as e:
-            print(f"E-mail not valid: {str(e)}")
+            print(f"Email validation failed: {str(e)}")
             return False
 
         except ValueError as ve:
