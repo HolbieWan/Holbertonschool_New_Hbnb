@@ -17,10 +17,10 @@ class UserFacade():
             is_admin=user_data["is_admin"]
         )
 
-        # existing_user = self.user_repo.get_by_attribute("email", user.email)
-        # if existing_user:
-        #     print(f"User {user.first_name} {user.last_name} already exists.")
-        #     return None
+        existing_user = self.user_repo.get_by_attribute("email", user.email)
+        if existing_user:
+            print(f"User {user.first_name} {user.last_name} already exists.")
+            return None
 
         if user.is_valid():
             print(f"User {user.first_name} {user.last_name} passed validation.")

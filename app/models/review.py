@@ -40,7 +40,8 @@ class Review(BaseModel):
 
     def to_dict(self):
         return {
-            "review_id" : self.id,
+            "type" : "review",
+            "id" : self.id,
             "text" : self.text,
             "rating" : self.rating,
             "place" : self.place,

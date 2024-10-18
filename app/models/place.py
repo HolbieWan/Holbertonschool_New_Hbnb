@@ -57,7 +57,8 @@ class Place(BaseModel):
 
     def to_dict(self):
         return {
-            "place_id" : self.id,
+            "type": "place",
+            "id" : self.id,
             "title" : self.title,
             "description" : self.description,
             "price" : self.price,

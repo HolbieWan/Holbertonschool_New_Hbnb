@@ -4,6 +4,9 @@ import json
 
 from datetime import datetime
 from app.models.user import User
+from app.models.place import Place
+from app.models.review import Review
+from app.models.amenity import Amenity
 
 from abc import ABC, abstractmethod
 
@@ -84,32 +87,68 @@ class InFileRepository(InMemoryRepository):
                 self._storage = {}
 
     def dict_to_obj(self, obj_data):
-
-        # Map 'user_id' to 'id' since the User class uses 'id' internally
-        if 'user_id' in obj_data:
-            obj_data['id'] = obj_data.pop('user_id')
-
         # Convert datetime fields from ISO format strings back to datetime objects
         if 'created_at' in obj_data:
             obj_data['created_at'] = datetime.fromisoformat(obj_data['created_at'])
         if 'updated_at' in obj_data:
             obj_data['updated_at'] = datetime.fromisoformat(obj_data['updated_at'])
 
-        # Reconstruct the User object
-        user = User(
-            first_name=obj_data['first_name'],
-            last_name=obj_data['last_name'],
-            email=obj_data['email'],
-            is_admin=obj_data['is_admin']
-        )
+        obj_type = obj_data.get('type')
 
-        # Manually set the id, created_at, updated_at, and places attributes
-        user.id = obj_data['id']
-        user.created_at = obj_data['created_at']
-        user.updated_at = obj_data['updated_at']
-        user.places = obj_data['places']
+        if obj_type == 'user':
 
-        return user
+            user = User(
+                first_name=obj_data['first_name'],
+                last_name=obj_data['last_name'],
+                email=obj_data['email'],
+                is_admin=obj_data['is_admin']
+            )
+            user.id = obj_data['id']
+            user.created_at = obj_data['created_at']
+            user.updated_at = obj_data['updated_at']
+            user.places = obj_data['places']
+            return user
+
+        elif obj_type == 'place':
+
+            place = Place(
+                title=obj_data['title'],
+                description=obj_data['description'],
+                price=obj_data['price'],
+                latitude=obj_data['latitude'],
+                longitude=obj_data['longitude'],
+                owner=obj_data['owner']
+            )
+
+            place.id = obj_data['id']
+            place.created_at = obj_data['created_at']
+            place.updated_at = obj_data['updated_at']
+            return place
+
+        elif obj_type == 'review':
+
+            review = Review(
+                text=obj_data['text'],
+                rating=obj_data['rating'],
+                place=obj_data['place'],
+                user=obj_data['user']
+            )
+
+            review.id = obj_data['id']
+            review.created_at = obj_data['created_at']
+            review.updated_at = obj_data['updated_at']
+            return review
+
+        elif obj_type == 'amenity':
+    
+            amenity = Amenity(name=obj_data['name'])
+            amenity.id = obj_data['id']
+            amenity.created_at = obj_data['created_at']
+            amenity.updated_at = obj_data['updated_at']
+            return amenity
+
+        else:
+            raise ValueError(f"Unknown object type: {obj_type}")
 
     def save_to_file(self):
         with open(self.path, "w") as data_file:

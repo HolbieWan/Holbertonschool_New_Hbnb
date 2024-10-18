@@ -26,6 +26,7 @@ class Amenity(BaseModel):
 
     def to_dict(self):
         return {
+            "type" : "amenity",
             "id" : self.id,
             "name" : self.name,
             "created_at" : self.created_at,
