@@ -1,4 +1,5 @@
 from app.models.base_model import BaseModel
+from app.models.user import User
 
 
 class Place(BaseModel):
@@ -25,6 +26,9 @@ class Place(BaseModel):
         try:
             if not all(isinstance(attr, str) for attr in [self.title, self.description]):
                 raise TypeError("title and description must be strings (str).")
+            
+            if not isinstance(self.owner, User):
+                raise TypeError("Onwner must be an instance of class(User)")
             
             if self.price < 0:
                 raise ValueError("price must be a positiv value")

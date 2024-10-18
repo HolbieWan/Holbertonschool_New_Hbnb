@@ -1,109 +1,24 @@
-from app.persistence.repository import InMemoryRepository
-from app.models.user import User
+from app.services.facade_user import UserFacade
+from app.services.facade_place import PlaceFacade
+from app.services.facade_review import ReviewFacade
+from app.services.facade_amenity import AmenityFacade
+from app.persistence.repo_selector import RepoSelector
 
 
 class HBnBFacade:
-    def __init__(self):
-        self.user_repo = InMemoryRepository()
-        self.place_repo = InMemoryRepository()
-        self.review_repo = InMemoryRepository()
-        self.amenity_repo = InMemoryRepository()
-
-#   <------------------------------------------------------------------------>
-#   <------------------------------------------------------------------------>
-
-    def create_user(self, user_data):
-        print(f"Creating user with data: {user_data}")
-
-        user = User(
-            first_name=user_data["first_name"], 
-            last_name=user_data["last_name"],
-            email=user_data["email"],
-            is_admin=user_data["is_admin"]
-        )
-
-        existing_user = self.user_repo.get_by_attribute("email", user.email)
-        if existing_user:
-            print(f"User {user.first_name} {user.last_name} already exists.")
-            return None
-
-        if user.is_valid():
-            print(f"User {user.first_name} {user.last_name} passed validation.")
-            self.user_repo.add(user)  
-            return user.to_dict()
-        else:
-            print(f"User {user.first_name} {user.last_name} failed validation.")
-            raise ValueError("Invalid user data.")
+    def __init__(self, repo_type="in_memory"):
         
-#   <------------------------------------------------------------------------>
+        user_repo_selector = RepoSelector(repo_type, "user_data.json") 
+        place_repo_selector = RepoSelector(repo_type, "place_data.json") 
+        review_repo_selector = RepoSelector(repo_type, "review_data.json")  
+        amenity_repo_selector = RepoSelector(repo_type, "amenity_data.json")
 
-    def get_user(self, user_id):
-        user = self.user_repo.get(user_id)
-        if user:
-            return user.to_dict()
-        else:
-            raise ValueError(f"User with id {user_id} not found.")
-        
-#   <------------------------------------------------------------------------>
+        user_repo = user_repo_selector.select_repo()
+        place_repo = place_repo_selector.select_repo()
+        review_repo = review_repo_selector.select_repo()
+        amenity_repo = amenity_repo_selector.select_repo()
 
-    def get_user_by_attribute(self, attr):
-        pass
-
-#   <------------------------------------------------------------------------>
-
-    def get_all_users(self):
-        users = self.user_repo.get_all()
-        return [user.to_dict() for user in users]
-    
-#   <------------------------------------------------------------------------>
-
-    def update_user(self, user_id, new_data):
-        user = self.user_repo.get(user_id)
-        if user:
-            user.update(new_data)
-            self.user_repo.update(user_id, new_data)
-            return user.to_dict()
-        else:
-            raise ValueError(f"User with id {user_id} not found.")
-        
-# <------------------------------------------------------------------------>
-# <------------------------------------------------------------------------>
-    def create_place(self, place_data):
-        pass
-    
-    def get_place(self, place_id):
-        pass
-
-    def get_all_places(self):
-        pass
-
-    def update_place(self, place_id):
-        pass
-
-# <------------------------------------------------------------------------>
-# <------------------------------------------------------------------------>
-    def create_review(self):
-        pass
-
-    def get_review(self, review_id):
-        pass
-
-    def get_all_reviews(self):
-        pass
-
-    def update_review(self):
-        pass
-
-# <------------------------------------------------------------------------>
-# <------------------------------------------------------------------------>
-    def create_amenity(self):
-        pass
-
-    def get_amenity(self, amenity_id):
-        pass
-
-    def get_all_amenity(self):
-        pass
-
-    def update_amenity(self, amenity_id):
-        pass
+        self.user_facade = UserFacade(user_repo)
+        self.place_facade = PlaceFacade(place_repo)
+        self.review_facade = ReviewFacade(review_repo)
+        self.amenity_facade = AmenityFacade(amenity_repo)

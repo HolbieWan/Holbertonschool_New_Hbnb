@@ -1,6 +1,6 @@
 from app.models.base_model import BaseModel
-from place import Place
-from user import User
+from app.models.place import Place
+from app.models.user import User
 
 
 class Review(BaseModel):
@@ -26,7 +26,7 @@ class Review(BaseModel):
                 raise TypeError("place must be an instance of class(Place)")
         
             if not isinstance(self.user, User):
-                raise TypeError("place must be an instance of class(User)")
+                raise TypeError("User must be an instance of class(User)")
             
             return True
 
