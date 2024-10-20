@@ -43,17 +43,6 @@
         "created_at": "2024-10-18T19:30:05.646363",
         "updated_at": "2024-10-18T19:30:05.646367"
     },
-    "ae74ddd4-f5eb-4851-a570-e315b4113602": {
-        "type": "user",
-        "id": "ae74ddd4-f5eb-4851-a570-e315b4113602",
-        "first_name": "Momo",
-        "last_name": "Hamed",
-        "email": "momo3@gmail.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-19T17:33:11.051737",
-        "updated_at": "2024-10-19T17:33:11.051742"
-    },
     "6a4cc42a-aebd-4441-b735-000b731b5887": {
         "type": "user",
         "id": "6a4cc42a-aebd-4441-b735-000b731b5887",
@@ -75,5 +64,27 @@
         "places": [],
         "created_at": "2024-10-20T12:41:00.653995",
         "updated_at": "2024-10-20T13:27:26.434425"
+    },
+    "94541551-1d7c-4b17-96fa-f2b12681cb7b": {
+        "type": "user",
+        "id": "94541551-1d7c-4b17-96fa-f2b12681cb7b",
+        "first_name": "Momo",
+        "last_name": "Hamed",
+        "email": "momo6@gmail.com",
+        "is_admin": false,
+        "places": [],
+        "created_at": "2024-10-20T20:15:11.320643",
+        "updated_at": "2024-10-20T20:15:11.320711"
+    },
+    "8e8ecb56-0fac-416d-a488-2ced4fccf5cd": {
+        "type": "user",
+        "id": "8e8ecb56-0fac-416d-a488-2ced4fccf5cd",
+        "first_name": "Johnny",
+        "last_name": "Begood",
+        "email": "johnny.begood@example.com",
+        "is_admin": false,
+        "places": [],
+        "created_at": "2024-10-20T21:25:22.288867",
+        "updated_at": "2024-10-20T21:26:33.571354"
     }
 }

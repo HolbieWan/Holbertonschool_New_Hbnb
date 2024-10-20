@@ -1,20 +1,4 @@
 {
-    "33f8ad70-b4e5-4543-85fc-75321374bc67": {
-        "type": "place",
-        "id": "33f8ad70-b4e5-4543-85fc-75321374bc67",
-        "title": "Chez Hanibal Smith",
-        "description": "Petite maison sympatique",
-        "price": 99.0,
-        "latitude": 47.2184,
-        "longitude": -1.5536,
-        "owner_id": "9bf2d38a-920b-4bca-b343-9011477279e7",
-        "reviews": [],
-        "amenities": [
-            "BBQ"
-        ],
-        "created_at": "2024-10-20T17:56:10.599340",
-        "updated_at": "2024-10-20T17:56:10.599354"
-    },
     "8fac29cd-1fe0-4f07-b78c-b5486ea0d0b8": {
         "type": "place",
         "id": "8fac29cd-1fe0-4f07-b78c-b5486ea0d0b8",
@@ -25,11 +9,54 @@
         "longitude": 2.0,
         "owner_id": "9bf2d38a-920b-4bca-b343-9011477279e7",
         "reviews": [],
-        "amenities": [
-            "BBQ",
-            "piscine"
-        ],
+        "amenities": [],
         "created_at": "2024-10-20T17:59:50.246007",
         "updated_at": "2024-10-20T18:06:52.029426"
+    },
+    "63f40cb5-6895-47ad-bbd1-d79ee8a9df58": {
+        "type": "place",
+        "id": "63f40cb5-6895-47ad-bbd1-d79ee8a9df58",
+        "title": "Chez Jule",
+        "description": "Top la classe",
+        "price": 99.0,
+        "latitude": 47.2184,
+        "longitude": -1.5536,
+        "owner_id": "9bf2d38a-920b-4bca-b343-9011477279e7",
+        "reviews": [],
+        "amenities": [
+            "Piscine"
+        ],
+        "created_at": "2024-10-20T20:15:47.039825",
+        "updated_at": "2024-10-20T21:41:14.450903"
+    },
+    "75fb5aa3-3ed7-4d8d-b56c-9df7a0dff607": {
+        "type": "place",
+        "id": "75fb5aa3-3ed7-4d8d-b56c-9df7a0dff607",
+        "title": "Chez Johnny",
+        "description": "BeGood",
+        "price": 99.0,
+        "latitude": 47.2184,
+        "longitude": -1.5536,
+        "owner_id": "94541551-1d7c-4b17-96fa-f2b12681cb7b",
+        "reviews": [],
+        "amenities": [],
+        "created_at": "2024-10-20T21:00:23.371783",
+        "updated_at": "2024-10-20T21:00:23.371792"
+    },
+    "31f06e91-c9c8-4ee3-9d8a-e1384619d8c8": {
+        "type": "place",
+        "id": "31f06e91-c9c8-4ee3-9d8a-e1384619d8c8",
+        "title": "Chez Hanibal Smith",
+        "description": "Tout se d\u00e9roule sans accro",
+        "price": 99.0,
+        "latitude": 47.2184,
+        "longitude": -1.5536,
+        "owner_id": "9bf2d38a-920b-4bca-b343-9011477279e7",
+        "reviews": [],
+        "amenities": [
+            "BBQ"
+        ],
+        "created_at": "2024-10-20T21:36:35.745000",
+        "updated_at": "2024-10-20T21:36:35.745006"
     }
 }

@@ -163,9 +163,9 @@ class InFileRepository(InMemoryRepository):
         obj = self.get(obj_id)
         if obj:
             obj.update(data)
-        self.save_to_file()
+            self.save_to_file()
 
     def delete(self, obj_id):
         if obj_id in self._storage:
             del self._storage[obj_id]
-        self.save_to_file()
+            self.save_to_file()

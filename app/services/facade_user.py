@@ -1,5 +1,6 @@
 from app.models.user import User
 
+
 class UserFacade():
 
     def __init__(self, selected_repo):

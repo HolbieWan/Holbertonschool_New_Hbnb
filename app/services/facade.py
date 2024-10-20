@@ -1,4 +1,3 @@
-import os
 from app.services.facade_user import UserFacade
 from app.services.facade_place import PlaceFacade
 from app.services.facade_review import ReviewFacade
@@ -25,4 +24,3 @@ class HBnBFacade:
         self.place_facade = PlaceFacade(place_repo)
         self.review_facade = ReviewFacade(review_repo)
         self.amenity_facade = AmenityFacade(amenity_repo)
-        
