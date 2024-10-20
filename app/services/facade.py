@@ -1,3 +1,4 @@
+import os
 from app.services.facade_user import UserFacade
 from app.services.facade_place import PlaceFacade
 from app.services.facade_review import ReviewFacade
@@ -6,7 +7,9 @@ from app.persistence.repo_selector import RepoSelector
 
 
 class HBnBFacade:
-    def __init__(self, repo_type="in_memory"):
+    def __init__(self, app_config):
+
+        repo_type = app_config.get('REPO_TYPE', 'in_memory')
         
         user_repo_selector = RepoSelector(repo_type, "user_data.json") 
         place_repo_selector = RepoSelector(repo_type, "place_data.json") 
