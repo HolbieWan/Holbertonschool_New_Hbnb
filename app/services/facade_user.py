@@ -55,10 +55,19 @@ class UserFacade():
     def update_user(self, user_id, new_data):
         user = self.user_repo.get(user_id)
         if user:
-            user.update(new_data)
+            # user.update(new_data)
             self.user_repo.update(user_id, new_data)
             return user.to_dict()
         else:
             raise ValueError(f"User with id {user_id} not found.")
         
     #   <------------------------------------------------------------------------>
+
+    def delete_user(self, user_id):
+        user = self.user_repo.get(user_id)
+        if user:
+            # user.delete(user_id)
+            print(f"Deleted user: {user}")
+            self.user_repo.delete(user_id)
+        else:
+            raise ValueError(f"User with id {user_id} not found.")

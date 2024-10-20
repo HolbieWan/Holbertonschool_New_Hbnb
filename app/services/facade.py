@@ -25,3 +25,4 @@ class HBnBFacade:
         self.place_facade = PlaceFacade(place_repo)
         self.review_facade = ReviewFacade(review_repo)
         self.amenity_facade = AmenityFacade(amenity_repo)
+        

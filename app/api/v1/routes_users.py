@@ -28,3 +28,32 @@ def get_all_users():
     facade = current_app.config['FACADE']
     users = facade.user_facade.get_all_users()
     return users
+
+@user_bp.route('/users/<user_id>', methods=["GET"])
+def get_user(user_id):
+    facade = current_app.config['FACADE']
+    try:
+        user = facade.user_facade.get_user(user_id)
+    except ValueError as e:
+        abort(404, "e")
+    return user
+
+@user_bp.route('/users/<user_id>', methods=["PUT"])
+def update_user(user_id):
+    facade = current_app.config['FACADE']
+    updated_data = request.get_json()
+    try:
+        updated_user = facade.user_facade.update_user(user_id, updated_data)
+    except ValueError as e:
+        abort(400, "e")
+    return updated_user
+
+@user_bp.route('/users/<user_id>', methods=["DELETE"])
+def delete_user(user_id):
+    facade = current_app.config['FACADE']
+    user = facade.user_facade.get_user(user_id)
+    try:
+        facade.user_facade.delete_user(user_id)
+    except ValueError as e:
+        abort(400, "e")
+    return (f"Deleted user: {user}")

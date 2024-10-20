@@ -7,7 +7,7 @@ class RepoSelector:
 
     def select_repo(self):
         if self.repo_type == "in_file":
-            return InFileRepository(self.file_name)  # Pass the file name to the repository
+            return InFileRepository(self.file_name)
         elif self.repo_type == "in_memory":
             return InMemoryRepository()
         else:

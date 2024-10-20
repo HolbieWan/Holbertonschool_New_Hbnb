@@ -32,17 +32,6 @@
         "created_at": "2024-10-18T19:18:21.646636",
         "updated_at": "2024-10-18T19:18:21.646712"
     },
-    "f12e0e11-c402-44a0-aaa9-c359e9ccd701": {
-        "type": "user",
-        "id": "f12e0e11-c402-44a0-aaa9-c359e9ccd701",
-        "first_name": "Momo",
-        "last_name": "Hamed",
-        "email": "momo@gmail.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-18T19:26:27.429086",
-        "updated_at": "2024-10-18T19:26:27.429091"
-    },
     "4583d4af-6605-4e7e-bb1e-5f6b668cbac5": {
         "type": "user",
         "id": "4583d4af-6605-4e7e-bb1e-5f6b668cbac5",
@@ -75,5 +64,16 @@
         "places": [],
         "created_at": "2024-10-20T12:08:39.048575",
         "updated_at": "2024-10-20T12:08:39.048580"
+    },
+    "9bf2d38a-920b-4bca-b343-9011477279e7": {
+        "type": "user",
+        "id": "9bf2d38a-920b-4bca-b343-9011477279e7",
+        "first_name": "Julien",
+        "last_name": "Leblanc",
+        "email": "Julien@gmail.com",
+        "is_admin": false,
+        "places": [],
+        "created_at": "2024-10-20T12:41:00.653995",
+        "updated_at": "2024-10-20T13:27:26.434425"
     }
 }
