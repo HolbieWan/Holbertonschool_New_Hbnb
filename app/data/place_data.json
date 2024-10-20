@@ -1,1 +1,35 @@
-{}
+{
+    "33f8ad70-b4e5-4543-85fc-75321374bc67": {
+        "type": "place",
+        "id": "33f8ad70-b4e5-4543-85fc-75321374bc67",
+        "title": "Chez Hanibal Smith",
+        "description": "Petite maison sympatique",
+        "price": 99.0,
+        "latitude": 47.2184,
+        "longitude": -1.5536,
+        "owner_id": "9bf2d38a-920b-4bca-b343-9011477279e7",
+        "reviews": [],
+        "amenities": [
+            "BBQ"
+        ],
+        "created_at": "2024-10-20T17:56:10.599340",
+        "updated_at": "2024-10-20T17:56:10.599354"
+    },
+    "8fac29cd-1fe0-4f07-b78c-b5486ea0d0b8": {
+        "type": "place",
+        "id": "8fac29cd-1fe0-4f07-b78c-b5486ea0d0b8",
+        "title": "Chez Juju",
+        "description": "On est bien chez Juju",
+        "price": 200.0,
+        "latitude": 40.0,
+        "longitude": 2.0,
+        "owner_id": "9bf2d38a-920b-4bca-b343-9011477279e7",
+        "reviews": [],
+        "amenities": [
+            "BBQ",
+            "piscine"
+        ],
+        "created_at": "2024-10-20T17:59:50.246007",
+        "updated_at": "2024-10-20T18:06:52.029426"
+    }
+}

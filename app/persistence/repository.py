@@ -117,7 +117,7 @@ class InFileRepository(InMemoryRepository):
                 price=obj_data['price'],
                 latitude=obj_data['latitude'],
                 longitude=obj_data['longitude'],
-                owner=obj_data['owner']
+                owner_id=obj_data['owner_id']
             )
 
             place.id = obj_data['id']

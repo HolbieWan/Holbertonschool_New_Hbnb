@@ -1,14 +1,15 @@
 from flask import Blueprint, current_app, jsonify, request, abort
-from app.services.facade import HBnBFacade
 
-user_bp = Blueprint('users', __name__)
+users_bp = Blueprint('users', __name__)
 
-@user_bp.route('/home', methods=["GET"])
+@users_bp.route('/home', methods=["GET"])
 def home():
     return "Welcome to the homepage"
 
+ #   <------------------------------------------------------------------------>
 
-@user_bp.route('/users', methods=["POST"])
+
+@users_bp.route('/users', methods=["POST"])
 def create_user():
     facade = current_app.config['FACADE']
     new_user = request.get_json()
@@ -23,13 +24,15 @@ def create_user():
     
     return jsonify(user), 201
 
-@user_bp.route('/users', methods=["GET"])
+ #   <------------------------------------------------------------------------>
+
+@users_bp.route('/users', methods=["GET"])
 def get_all_users():
     facade = current_app.config['FACADE']
     users = facade.user_facade.get_all_users()
     return users
 
-@user_bp.route('/users/<user_id>', methods=["GET"])
+@users_bp.route('/users/<user_id>', methods=["GET"])
 def get_user(user_id):
     facade = current_app.config['FACADE']
     try:
@@ -38,7 +41,9 @@ def get_user(user_id):
         abort(404, "e")
     return user
 
-@user_bp.route('/users/<user_id>', methods=["PUT"])
+ #   <------------------------------------------------------------------------>
+
+@users_bp.route('/users/<user_id>', methods=["PUT"])
 def update_user(user_id):
     facade = current_app.config['FACADE']
     updated_data = request.get_json()
@@ -48,7 +53,9 @@ def update_user(user_id):
         abort(400, "e")
     return updated_user
 
-@user_bp.route('/users/<user_id>', methods=["DELETE"])
+ #   <------------------------------------------------------------------------>
+
+@users_bp.route('/users/<user_id>', methods=["DELETE"])
 def delete_user(user_id):
     facade = current_app.config['FACADE']
     user = facade.user_facade.get_user(user_id)

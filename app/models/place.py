@@ -3,16 +3,16 @@ from app.models.user import User
 
 
 class Place(BaseModel):
-    def __init__(self, title, description, price, latitude, longitude, owner):
+    def __init__(self, title, description, price, latitude, longitude, owner_id, amenities=[]):
         super().__init__()
         self.title = title
         self.description = description
         self.price = price
         self.latitude = latitude
         self.longitude = longitude
-        self.owner = owner
+        self.owner_id = owner_id
         self.reviews = []
-        self.amenities = []
+        self.amenities = amenities
 
     def add_review(self, review):
         """Add a review to the place."""
@@ -27,9 +27,6 @@ class Place(BaseModel):
             if not all(isinstance(attr, str) for attr in [self.title, self.description]):
                 raise TypeError("title and description must be strings (str).")
             
-            if not isinstance(self.owner, User):
-                raise TypeError("Onwner must be an instance of class(User)")
-            
             if self.price < 0:
                 raise ValueError("price must be a positiv value")
             
@@ -37,7 +34,7 @@ class Place(BaseModel):
                 raise ValueError("title must be less than 100 characters.")
             
             if not all(isinstance(attr, float) for attr in [self.price, self.latitude, self.longitude]):
-                raise TypeError("pricel, latitude, and longitude must be floats (float).")
+                raise TypeError("price, latitude, and longitude must be floats (float).")
 
             if self.latitude > 90 or self.latitude < -90:
                 raise ValueError("Must be within the range of -90.0 to 90.0")
@@ -64,9 +61,9 @@ class Place(BaseModel):
             "price" : self.price,
             "latitude" : self.latitude,
             "longitude" : self.longitude,
-            "owner" : self.owner,
+            "owner_id" : self.owner_id,
             "reviews" : self.reviews,
             "amenities" : self.amenities,
-            "created_at" : self.created_at,
-            "updated_at" : self.updated_at
+            "created_at" : self.created_at.isoformat(),
+            "updated_at" : self.updated_at.isoformat()
         }

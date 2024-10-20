@@ -2,7 +2,8 @@ import os
 from flask import Flask
 from flask_restx import Api
 from config import config 
-from app.api.v1.routes_users import user_bp 
+from app.api.v1.routes_users import users_bp 
+from app.api.v1.routes_places import places_bp
 from app.services.facade import HBnBFacade
 
 def create_app(config_name='default'):
@@ -13,6 +14,7 @@ def create_app(config_name='default'):
 
     app.config['FACADE'] = HBnBFacade(app.config)
 
-    app.register_blueprint(user_bp)
+    app.register_blueprint(users_bp)
+    app.register_blueprint(places_bp)
 
     return app
