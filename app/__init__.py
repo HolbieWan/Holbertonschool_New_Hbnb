@@ -2,11 +2,16 @@ import os
 from flask import Flask
 from flask_restx import Api
 from config import config
+
 from app.api.v1.routes_users import users_bp
-from app.api.v1.routes_places import places_bp 
+from app.api.v1.routes_places import places_bp
+from app.api.v1.routes_amenities import amenities_bp
+
+from app.services.facade import HBnBFacade
 from app.services.facade_user import UserFacade
 from app.services.facade_place import PlaceFacade
-from app.services.facade import HBnBFacade
+from app.services.facade_amenity import AmenityFacade
+
 from app.services.facade_relations_manager import FacadeRelationManager
 from app.persistence.repo_selector import RepoSelector
 
@@ -32,10 +37,10 @@ def create_app(config_name='default'):
     user_facade = UserFacade(user_repo)
     place_facade = PlaceFacade(place_repo)
     # review_facade = ReviewFacade(review_repo)
-    # amenity_facade = AmenityFacade(amenity_repo)
+    amenity_facade = AmenityFacade(amenity_repo)
 
     # Initialize HBnBFacade with existing facades
-    hbnb_facade = HBnBFacade(user_facade, place_facade)
+    hbnb_facade = HBnBFacade(user_facade, place_facade, amenity_facade)
 
     # Store hbnb_facade and other facades in app.extensions
     app.extensions['HBNB_FACADE'] = hbnb_facade
@@ -44,5 +49,6 @@ def create_app(config_name='default'):
     # Register blueprints
     app.register_blueprint(users_bp)
     app.register_blueprint(places_bp)
+    app.register_blueprint(amenities_bp)
 
     return app
