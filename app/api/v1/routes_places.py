@@ -85,3 +85,30 @@ def get_all_places_by_owner_id(owner_id):
     except ValueError as e:
         abort(400, "e")
     return jsonify(places), 200
+
+#   <------------------------------------------------------------------------>
+
+@places_bp.route('/users/.../<user_id>/places', methods=["GET"])
+def get_all_places_by_user_id(user_id):
+    facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
+    try:
+        places = facade_relation_manager.get_all_places_from_user_id(user_id)
+    except ValueError as e:
+        abort(400, "e")
+    return jsonify(places), 200
+
+#   <------------------------------------------------------------------------>
+
+@places_bp.route('/users/places/<place_id>', methods=["DELETE"])
+def delete_place_from_owner_place_list(place_id):
+    facade = current_app.extensions['HBNB_FACADE']
+    facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
+    place = facade.place_facade.get_place(place_id)
+    try:
+        user_id = place.get("owner_id")
+        facade_relation_manager.delete_place_from_owner_place_list(place_id, user_id)
+    except ValueError as e:
+        abort(400, "e")
+    return (f"Place: {place} has been deleted")
+
+ #   <------------------------------------------------------------------------>

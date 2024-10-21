@@ -12,19 +12,5 @@
         "amenities": [],
         "created_at": "2024-10-21T10:46:42.578352",
         "updated_at": "2024-10-21T10:46:42.578390"
-    },
-    "e79b171c-ff0c-475d-a492-e21d4943d48d": {
-        "type": "place",
-        "id": "e79b171c-ff0c-475d-a492-e21d4943d48d",
-        "title": "King kelly's place!",
-        "description": "Tout se d\u00e9roule sans accro",
-        "price": 99.0,
-        "latitude": 47.2184,
-        "longitude": -1.5536,
-        "owner_id": "b67dfdbe-dc61-4f8d-8791-c4c1133afb3a",
-        "reviews": [],
-        "amenities": [],
-        "created_at": "2024-10-21T11:30:13.778638",
-        "updated_at": "2024-10-21T11:30:13.778644"
     }
 }
