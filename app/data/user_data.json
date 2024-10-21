@@ -11,5 +11,29 @@
         ],
         "created_at": "2024-10-21T10:39:08.376548",
         "updated_at": "2024-10-21T10:43:06.895185"
+    },
+    "b67dfdbe-dc61-4f8d-8791-c4c1133afb3a": {
+        "type": "user",
+        "id": "b67dfdbe-dc61-4f8d-8791-c4c1133afb3a",
+        "first_name": "Kelly",
+        "last_name": "Slater",
+        "email": "Kelly.slater@gmail.com",
+        "is_admin": true,
+        "places": [
+            "e79b171c-ff0c-475d-a492-e21d4943d48d"
+        ],
+        "created_at": "2024-10-21T11:28:05.508202",
+        "updated_at": "2024-10-21T11:30:13.779349"
+    },
+    "196e4433-db28-49e1-a382-2a0e56982894": {
+        "type": "user",
+        "id": "196e4433-db28-49e1-a382-2a0e56982894",
+        "first_name": "Kelly",
+        "last_name": "Slater",
+        "email": "toto@gmail.com",
+        "is_admin": true,
+        "places": [],
+        "created_at": "2024-10-21T11:47:52.588914",
+        "updated_at": "2024-10-21T11:47:52.588919"
     }
 }

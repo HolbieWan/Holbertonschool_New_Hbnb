@@ -76,8 +76,8 @@ class PlaceFacade():
     #   <------------------------------------------------------------------------>
 
     def get_all_places_from_owner_id(self, owner_id):
-        places = self.place_repo.get_by_attribute(owner_id, owner_id)
+        places = self.place_repo.get_by_attribute("owner_id", owner_id)
         if places:
-            return places.to_dict()
+            return [place.to_dict() for place in places]
         else:
             raise ValueError(f"No place found for owner_id: {owner_id}")

@@ -60,7 +60,7 @@ class InMemoryRepository(Repository):
             del self._storage[obj_id]
 
     def get_by_attribute(self, attr_name, attr_value):
-        return next((obj for obj in self._storage.values() if getattr(obj, attr_name) == attr_value), None)
+        return [obj for obj in self._storage.values() if getattr(obj, attr_name) == attr_value]
     
 
 class InFileRepository(InMemoryRepository):

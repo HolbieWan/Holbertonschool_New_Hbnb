@@ -1,20 +1,4 @@
 {
-    "22e559de-b97f-4828-bf92-017f458aff0f": {
-        "type": "place",
-        "id": "22e559de-b97f-4828-bf92-017f458aff0f",
-        "title": "Chez Jule",
-        "description": "Top la classe",
-        "price": 99.0,
-        "latitude": 47.2184,
-        "longitude": -1.5536,
-        "owner_id": "14bd6576-0361-463d-8d32-8a24ab8c5cb7",
-        "reviews": [],
-        "amenities": [
-            "Piscine"
-        ],
-        "created_at": "2024-10-21T10:43:06.894147",
-        "updated_at": "2024-10-21T10:56:56.314326"
-    },
     "55c0a18f-83cb-4938-b949-c6e36e612bf7": {
         "type": "place",
         "id": "55c0a18f-83cb-4938-b949-c6e36e612bf7",
@@ -25,10 +9,22 @@
         "longitude": -1.5536,
         "owner_id": "14bd6576-0361-463d-8d32-8a24ab8c5cb7",
         "reviews": [],
-        "amenities": [
-            "Piscine"
-        ],
+        "amenities": [],
         "created_at": "2024-10-21T10:46:42.578352",
         "updated_at": "2024-10-21T10:46:42.578390"
+    },
+    "e79b171c-ff0c-475d-a492-e21d4943d48d": {
+        "type": "place",
+        "id": "e79b171c-ff0c-475d-a492-e21d4943d48d",
+        "title": "King kelly's place!",
+        "description": "Tout se d\u00e9roule sans accro",
+        "price": 99.0,
+        "latitude": 47.2184,
+        "longitude": -1.5536,
+        "owner_id": "b67dfdbe-dc61-4f8d-8791-c4c1133afb3a",
+        "reviews": [],
+        "amenities": [],
+        "created_at": "2024-10-21T11:30:13.778638",
+        "updated_at": "2024-10-21T11:30:13.778644"
     }
 }

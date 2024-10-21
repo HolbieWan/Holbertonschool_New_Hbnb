@@ -77,11 +77,11 @@ def delete_user(place_id):
 
  #   <------------------------------------------------------------------------>
 
-@places_bp.route('/places/<owner_id>', methods=["GET"])
+@places_bp.route('/users/<owner_id>/places', methods=["GET"])
 def get_all_places_by_owner_id(owner_id):
     facade = current_app.extensions['HBNB_FACADE']
     try:
         places = facade.place_facade.get_all_places_from_owner_id(owner_id)
     except ValueError as e:
         abort(400, "e")
-    return (f"Places of owner: {owner_id}: {places}")
+    return jsonify(places), 200
