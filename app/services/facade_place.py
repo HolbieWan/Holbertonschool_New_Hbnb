@@ -23,7 +23,7 @@ class PlaceFacade():
         existing_place = self.place_repo.get_by_attribute("title", place.title)
         if existing_place:
             print(f"Place: {place.title} already exists. Please choose another title for your place")
-            return None
+            raise ValueError(f"Place '{place.title}' already exists. Please choose another title.")
 
         if place.is_valid():
             print(f"User {place.title} passed validation.")

@@ -21,7 +21,7 @@ class UserFacade():
         existing_user = self.user_repo.get_by_attribute("email", user.email)
         if existing_user:
             print(f"User {user.first_name} {user.last_name} already exists.")
-            return None
+            raise ValueError(f"User with email: {user.email} already exists.")
 
         if user.is_valid():
             print(f"User {user.first_name} {user.last_name} passed validation.")

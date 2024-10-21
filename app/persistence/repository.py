@@ -83,8 +83,7 @@ class InFileRepository(InMemoryRepository):
                         for obj_id, obj_data in data.items()
                     }
             except (json.JSONDecodeError, ValueError):
-                print("The file is empty or corrupted, initializing with an empty storage.")
-                self._storage = {}
+                print("The file is empty or corrupted")
 
     def dict_to_obj(self, obj_data):
         # Convert datetime fields from ISO format strings back to datetime objects

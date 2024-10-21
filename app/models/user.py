@@ -21,9 +21,9 @@ class User(BaseModel):
                 print("Validation failed: First name, last name, or email is not a string.")
                 raise TypeError("email, first_name, and last_name must be strings (str).")
 
-            if len(self.first_name) > 50 or len(self.last_name) > 50:
+            if len(self.first_name) > 50 or len(self.first_name) == 0 or len(self.last_name) > 50  or len(self.last_name) == 0 :
                 print("Validation failed: First name or last name exceeds 50 characters.")
-                raise ValueError("first_name and last_name must be less than 50 characters.")
+                raise ValueError("first_name and last_name must not be empty and less than 50 characters.")
 
             valid = validate_email(self.email)
             return True

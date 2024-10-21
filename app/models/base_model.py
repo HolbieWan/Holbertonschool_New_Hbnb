@@ -14,7 +14,7 @@ class BaseModel:
     def update(self, data):
         """Update the attributes of the object based on the provided dictionary"""
         for key, value in data.items():
-            if hasattr(self, key):
+            if hasattr(self, key) and key not in ['id', 'created_at', 'updated_at']:
                 setattr(self, key, value)
         self.save()
 

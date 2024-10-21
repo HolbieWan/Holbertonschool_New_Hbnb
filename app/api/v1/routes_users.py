@@ -11,7 +11,7 @@ def home():
 
 @users_bp.route('/users', methods=["POST"])
 def create_user():
-    facade = current_app.config['FACADE']
+    facade = current_app.extensions['HBNB_FACADE']
     new_user = request.get_json()
     try:
         user = facade.user_facade.create_user(new_user)
@@ -28,13 +28,13 @@ def create_user():
 
 @users_bp.route('/users', methods=["GET"])
 def get_all_users():
-    facade = current_app.config['FACADE']
+    facade = current_app.extensions['HBNB_FACADE']
     users = facade.user_facade.get_all_users()
     return users
 
 @users_bp.route('/users/<user_id>', methods=["GET"])
 def get_user(user_id):
-    facade = current_app.config['FACADE']
+    facade = current_app.extensions['HBNB_FACADE']
     try:
         user = facade.user_facade.get_user(user_id)
     except ValueError as e:
@@ -45,7 +45,7 @@ def get_user(user_id):
 
 @users_bp.route('/users/<user_id>', methods=["PUT"])
 def update_user(user_id):
-    facade = current_app.config['FACADE']
+    facade = current_app.extensions['HBNB_FACADE']
     updated_data = request.get_json()
     try:
         updated_user = facade.user_facade.update_user(user_id, updated_data)
@@ -57,7 +57,7 @@ def update_user(user_id):
 
 @users_bp.route('/users/<user_id>', methods=["DELETE"])
 def delete_user(user_id):
-    facade = current_app.config['FACADE']
+    facade = current_app.extensions['HBNB_FACADE']
     user = facade.user_facade.get_user(user_id)
     try:
         facade.user_facade.delete_user(user_id)

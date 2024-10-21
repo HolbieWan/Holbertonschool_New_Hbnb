@@ -1,90 +1,15 @@
 {
-    "12c5a112-7a86-49c7-b06a-f28c3ddfec08": {
+    "14bd6576-0361-463d-8d32-8a24ab8c5cb7": {
         "type": "user",
-        "id": "12c5a112-7a86-49c7-b06a-f28c3ddfec08",
+        "id": "14bd6576-0361-463d-8d32-8a24ab8c5cb7",
         "first_name": "Brad",
-        "last_name": "Pity",
-        "email": "brad.pity@gmail.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-18T16:52:50.456979",
-        "updated_at": "2024-10-18T16:55:47.365435"
-    },
-    "4bc3b26a-031d-4c24-a6fe-9e02b66d47ff": {
-        "type": "user",
-        "id": "4bc3b26a-031d-4c24-a6fe-9e02b66d47ff",
-        "first_name": "Bob",
-        "last_name": "Marley",
-        "email": "bob.marley@gmail.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-18T17:56:24.086342",
-        "updated_at": "2024-10-18T17:56:24.086470"
-    },
-    "dc6ee3ce-ec1a-4b17-bb9d-f99a82632398": {
-        "type": "user",
-        "id": "dc6ee3ce-ec1a-4b17-bb9d-f99a82632398",
-        "first_name": "Momo",
-        "last_name": "Hamed",
-        "email": "momo@gmail.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-18T19:18:21.646636",
-        "updated_at": "2024-10-18T19:18:21.646712"
-    },
-    "4583d4af-6605-4e7e-bb1e-5f6b668cbac5": {
-        "type": "user",
-        "id": "4583d4af-6605-4e7e-bb1e-5f6b668cbac5",
-        "first_name": "Momo",
-        "last_name": "Hamed",
-        "email": "momo2@gmail.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-18T19:30:05.646363",
-        "updated_at": "2024-10-18T19:30:05.646367"
-    },
-    "6a4cc42a-aebd-4441-b735-000b731b5887": {
-        "type": "user",
-        "id": "6a4cc42a-aebd-4441-b735-000b731b5887",
-        "first_name": "Charmotte",
-        "last_name": "La Marmotte",
-        "email": "charmotte@gmail.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-20T12:08:39.048575",
-        "updated_at": "2024-10-20T14:16:33.729006"
-    },
-    "9bf2d38a-920b-4bca-b343-9011477279e7": {
-        "type": "user",
-        "id": "9bf2d38a-920b-4bca-b343-9011477279e7",
-        "first_name": "Julien",
-        "last_name": "Leblanc",
-        "email": "Julien@gmail.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-20T12:41:00.653995",
-        "updated_at": "2024-10-20T13:27:26.434425"
-    },
-    "94541551-1d7c-4b17-96fa-f2b12681cb7b": {
-        "type": "user",
-        "id": "94541551-1d7c-4b17-96fa-f2b12681cb7b",
-        "first_name": "Momo",
-        "last_name": "Hamed",
-        "email": "momo6@gmail.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-20T20:15:11.320643",
-        "updated_at": "2024-10-20T20:15:11.320711"
-    },
-    "8e8ecb56-0fac-416d-a488-2ced4fccf5cd": {
-        "type": "user",
-        "id": "8e8ecb56-0fac-416d-a488-2ced4fccf5cd",
-        "first_name": "Johnny",
-        "last_name": "Begood",
-        "email": "johnny.begood@example.com",
-        "is_admin": false,
-        "places": [],
-        "created_at": "2024-10-20T21:25:22.288867",
-        "updated_at": "2024-10-20T21:26:33.571354"
+        "last_name": "Pit",
+        "email": "brad.pit@gmail.com",
+        "is_admin": true,
+        "places": [
+            "22e559de-b97f-4828-bf92-017f458aff0f"
+        ],
+        "created_at": "2024-10-21T10:39:08.376548",
+        "updated_at": "2024-10-21T10:43:06.895185"
     }
 }
