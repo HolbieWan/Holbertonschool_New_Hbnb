@@ -1,1 +1,22 @@
-{}
+{
+    "fd29899c-5550-40b4-8af5-244145df7e53": {
+        "type": "review",
+        "id": "fd29899c-5550-40b4-8af5-244145df7e53",
+        "text": "Great place to stay, had an amazing vacation",
+        "rating": 4,
+        "place": "55c0a18f-83cb-4938-b949-c6e36e612bf7",
+        "user": "196e4433-db28-49e1-a382-2a0e56982894",
+        "created_at": "2024-10-21T16:37:31.281139",
+        "updated_at": "2024-10-21T16:37:31.281143"
+    },
+    "24913e03-3fe2-452b-8782-95417d80a1c4": {
+        "type": "review",
+        "id": "24913e03-3fe2-452b-8782-95417d80a1c4",
+        "text": "This place is relaxing",
+        "rating": 3,
+        "place": "55c0a18f-83cb-4938-b949-c6e36e612bf7",
+        "user": "196e4433-db28-49e1-a382-2a0e56982894",
+        "created_at": "2024-10-21T17:42:50.962797",
+        "updated_at": "2024-10-21T17:42:50.962802"
+    }
+}

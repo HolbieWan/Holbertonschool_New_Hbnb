@@ -22,11 +22,8 @@ class Review(BaseModel):
             if self.rating < 1 or self.rating > 5:
                 raise ValueError("rating must be between 1 and 5.")
             
-            if not isinstance(self.place, Place):
-                raise TypeError("place must be an instance of class(Place)")
-        
-            if not isinstance(self.user, User):
-                raise TypeError("User must be an instance of class(User)")
+            if self.text == "" or self.place == "" or self.user == "":
+                raise ValueError("Fields can not be empty !")
             
             return True
 

@@ -71,7 +71,7 @@ class PlaceFacade():
             print(f"Deleted place: {place}")
             self.place_repo.delete(place_id)
         else:
-            raise ValueError(f"Place with id: {place_id} not found.")
+            raise ValueError(f"Place with id: {place_id} not found !")
         
     #   <------------------------------------------------------------------------>
 
