@@ -50,3 +50,13 @@ def update_amenity(amenity_id):
         abort(404, "e")
     return updated_amenity
 
+@amenities_bp.route('/amenities/<amenity_id>', methods=["DELETE"])
+def delete_amenity(amenity_id):
+    facade = current_app.extensions['HBNB_FACADE']
+    amenity_to_delete = facade.amenity_facade.get_amenity(amenity_id)
+    try:
+        facade.amenity_facade.delete_amenity(amenity_id)
+    except ValueError as e:
+        abort(400, "e")
+    return (f"Amenity: {amenity_to_delete} has been deleted.")
+    

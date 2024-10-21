@@ -54,7 +54,7 @@ def get_place(place_id):
  #   <------------------------------------------------------------------------>
 
 @places_bp.route('/places/<place_id>', methods=["PUT"])
-def update_user(place_id):
+def update_place(place_id):
     facade = current_app.extensions['HBNB_FACADE']
     updated_data = request.get_json()
     try:
@@ -66,14 +66,14 @@ def update_user(place_id):
  #   <------------------------------------------------------------------------>
 
 @places_bp.route('/places/<place_id>', methods=["DELETE"])
-def delete_user(place_id):
+def delete_place(place_id):
     facade = current_app.extensions['HBNB_FACADE']
     place = facade.place_facade.get_place(place_id)
     try:
         facade.place_facade.delete_place(place_id)
     except ValueError as e:
         abort(400, "e")
-    return (f"Deleted place: {place}")
+    return (f"Place: {place} has been deleted")
 
  #   <------------------------------------------------------------------------>
 
