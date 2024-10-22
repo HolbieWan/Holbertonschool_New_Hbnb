@@ -14,6 +14,21 @@ def create_review():
 
     #   <------------------------------------------------------------------------>
 
+@reviews_bp.route('/<place_id>/reviews', methods=["POST"])
+def create_reviews_for_place(place_id):
+    facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
+    new_review= request.get_json()
+    
+    try:
+        review = facade_relation_manager.create_review_for_place(place_id, new_review)
+
+    except ValueError as e:
+        abort(400, "e")
+
+    return review, 201
+
+#   <------------------------------------------------------------------------>
+
 @reviews_bp.route('/reviews', methods=["GET"])
 def get_all_reviews():
     facade = current_app.extensions['HBNB_FACADE']
@@ -36,6 +51,17 @@ def get_reviews_from_review_id(review_id):
 
     #   <------------------------------------------------------------------------>
 
+@reviews_bp.route('/places/<place_id>/reviews', methods=["GET"])
+def get_all_reviews_id_from_place(place_id):
+    facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
+    try:
+        reviews = facade_relation_manager.get_all_reviews_id_from_place(place_id)
+    except ValueError as e:
+        abort(400, "e")
+    return jsonify(reviews), 200
+
+#   <------------------------------------------------------------------------>
+
 @reviews_bp.route('/reviews/<review_id>', methods=["PUT"])
 def update_review(review_id):
     facade = current_app.extensions['HBNB_FACADE']
@@ -57,3 +83,18 @@ def delete_review(review_id):
     except ValueError as e:
         abort(400, "e")
     return (f"Review: {review} has been deleted.")
+
+#   <------------------------------------------------------------------------>
+
+@reviews_bp.route('/places/<place_id>/reviews/<review_id>', methods=["DELETE"])
+def delete_amenity_from_place_list(place_id, review_id):
+    facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
+
+    try:
+        facade_relation_manager.delete_review_from_place_list(review_id, place_id)
+    except ValueError as e:
+        abort(400, str(e))
+
+    return jsonify({"message": f"Review: {review_id} has been deleted from amenities list"}), 200
+
+ #   <------------------------------------------------------------------------>

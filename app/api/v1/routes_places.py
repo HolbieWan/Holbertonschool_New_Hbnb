@@ -89,7 +89,7 @@ def get_all_places_by_owner_id(owner_id):
 #   <------------------------------------------------------------------------>
 
 @places_bp.route('/users/.../<user_id>/places', methods=["GET"])
-def get_all_places_by_user_id(user_id):
+def get_all_places_from_user_id(user_id):
     facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
     try:
         places = facade_relation_manager.get_all_places_from_user_id(user_id)

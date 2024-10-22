@@ -8,9 +8,14 @@
         "latitude": 47.2184,
         "longitude": -1.5536,
         "owner_id": "14bd6576-0361-463d-8d32-8a24ab8c5cb7",
-        "reviews": [],
-        "amenities": [],
+        "reviews": [
+            "af4b15cc-7ab9-4107-8b98-39f30e4afdd0",
+            "74035680-19b2-4166-b305-272c499a4853"
+        ],
+        "amenities": [
+            "b3989851-41d2-49c2-bc2c-eb8490e6909c"
+        ],
         "created_at": "2024-10-21T10:46:42.578352",
-        "updated_at": "2024-10-21T10:46:42.578390"
+        "updated_at": "2024-10-22T17:24:37.010047"
     }
 }

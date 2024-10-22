@@ -3,7 +3,7 @@ from app.models.user import User
 
 
 class Place(BaseModel):
-    def __init__(self, title, description, price, latitude, longitude, owner_id, amenities=[]):
+    def __init__(self, title, description, price, latitude, longitude, owner_id, amenities=[], reviews=[]):
         super().__init__()
         self.title = title
         self.description = description
@@ -11,7 +11,7 @@ class Place(BaseModel):
         self.latitude = latitude
         self.longitude = longitude
         self.owner_id = owner_id
-        self.reviews = []
+        self.reviews = reviews
         self.amenities = amenities
 
     def add_review(self, review):

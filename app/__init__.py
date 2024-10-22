@@ -46,7 +46,7 @@ def create_app(config_name='default'):
 
     # Store hbnb_facade and other facades in app.extensions
     app.extensions['HBNB_FACADE'] = hbnb_facade
-    app.extensions['FACADE_RELATION_MANAGER'] = FacadeRelationManager(user_facade, place_facade)
+    app.extensions['FACADE_RELATION_MANAGER'] = FacadeRelationManager(user_facade, place_facade, amenity_facade, review_facade)
 
     # Register blueprints
     app.register_blueprint(users_bp)

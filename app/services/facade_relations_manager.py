@@ -1,9 +1,11 @@
 
 
 class FacadeRelationManager:
-    def __init__(self, user_facade, place_facade):
+    def __init__(self, user_facade, place_facade, amenity_facade, review_facade):
         self.user_facade = user_facade
         self.place_facade = place_facade
+        self.amenity_facade = amenity_facade
+        self.review_facade = review_facade
 
 # User - place relations
 # <------------------------------------------------------------------------>
@@ -52,70 +54,92 @@ class FacadeRelationManager:
 
 
 
-# #  Place - Amenity relations
-# # <------------------------------------------------------------------------>
+ #  Place - Amenity relations
+ # <------------------------------------------------------------------------>
 
-#     def create_amenity_for_place(self, place_id, amenity_data):
-#         user = self.user_facade.user_repo.get(user_id)
-       
-#         if not user:
-#             raise ValueError(f"User with id {user_id} not found.")
+    def create_amenity_for_place(self, place_id, amenity_data):
+        place = self.place_facade.place_repo.get(place_id)
 
-#         place_data['owner_id'] = user_id
-#         place = self.place_facade.create_place(place_data)
-#         user.places.append(place['id'])
-#         self.user_facade.user_repo.update(user_id, user.to_dict())
+        if not place:
+            raise ValueError(f"Place: {place_id} not found.")
 
-#         return place
+        amenity = self.amenity_facade.create_amenity(amenity_data)
+        place.amenities.append(amenity['id'])
+        self.place_facade.place_repo.update(place_id, place.to_dict())
+
+        return amenity
     
-#         # <------------------------------------------>
+        # <------------------------------------------>
 
-#     def get_all_amenities_from_place(self, place_id):
-#         user = self.user_facade.user_repo.get(user_id)
+    def get_all_amenities_id_from_place(self, place_id):
+        place = self.place_facade.place_repo.get(place_id)
 
-#         if not user:
-#             raise ValueError(f"Usier with id: {user_id} not found")
+        if not place:
+            raise ValueError(f"Place: {place_id} not found")
         
-#         # <------------------------------------------>
+        amenities = place.amenities
 
-#     def update_amenity_from_place(self, amenity_id, place_id):
-#         pass
+        return amenities
 
-#         # <------------------------------------------>
+        # <------------------------------------------>
 
-#     def delete_amenity_from_place(self, amenity_id, place_id):
-#         pass
+    def delete_amenity_from_place_list(self, amenity_id, place_id):
+        place = self.place_facade.place_repo.get(place_id)
+
+        if not place:
+            raise ValueError(f"Place with id: {place_id} not found")
+        
+        amenities = place.amenities
+
+        if amenity_id in amenities:
+            amenities.remove(amenity_id)
+            self.place_facade.place_repo.update(place_id, place.to_dict())
+        else:
+            print(f"Amenity {amenity_id} not found in places amenities list.")
+
+        self.amenity_facade.amenity_repo.delete(amenity_id)
 
 # #  Place - review relations
 # # <------------------------------------------------------------------------>
 
-#     def create_reiew_for_place(self, place_id, review_data):
-#         user = self.user_facade.user_repo.get(user_id)
-       
-#         if not user:
-#             raise ValueError(f"User with id {user_id} not found.")
+    def create_review_for_place(self, place_id, review_data):
+        place = self.place_facade.place_repo.get(place_id)
+    
+        if not place:
+            raise ValueError(f"User with id {place_id} not found.")
 
-#         place_data['owner_id'] = user_id
-#         place = self.place_facade.create_place(place_data)
-#         user.places.append(place['id'])
-#         self.user_facade.user_repo.update(user_id, user.to_dict())
+        review = self.review_facade.create_review(review_data)
+        place.reviews.append(review['id'])
+        self.place_facade.place_repo.update(place_id, place.to_dict())
 
-#         return place
+        return review
     
 #         # <------------------------------------------>
 
-#     def get_all_reviews_from_place(self, place_id):
-#         user = self.user_facade.user_repo.get(user_id)
+    def get_all_reviews_id_from_place(self, place_id):
+        place = self.place_facade.place_repo.get(place_id)
 
-#         if not user:
-#             raise ValueError(f"Usier with id: {user_id} not found")
+        if not place:
+            raise ValueError(f"Usier with id: {place_id} not found")
         
+        reviews = place.reviews
+
+        return reviews
+    
 #         # <------------------------------------------>
 
-#     def update_review_from_place(self, review_id, place_id):
-#         pass
+    def delete_review_from_place_list(self, review_id, place_id):
+        place = self.place_facade.place_repo.get(place_id)
 
-#         # <------------------------------------------>
+        if not place:
+            raise ValueError(f"Place with id: {place_id} not found")
+        
+        reviews = place.reviews
 
-#     def delete_riview_from_place(self, review_id, place_id):
-#         pass
+        if review_id in reviews:
+            reviews.remove(review_id)
+            self.place_facade.place_repo.update(place_id, place.to_dict())
+        else:
+            print(f"Review {review_id} not found in places reviews list.")
+
+        self.review_facade.review_repo.delete(review_id)
