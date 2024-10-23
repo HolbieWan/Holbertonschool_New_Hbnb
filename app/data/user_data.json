@@ -33,5 +33,18 @@
         "places": [],
         "created_at": "2024-10-21T11:47:52.588914",
         "updated_at": "2024-10-21T11:47:52.588919"
+    },
+    "b7b76c98-13aa-428f-8d07-f825f12b9147": {
+        "type": "user",
+        "id": "b7b76c98-13aa-428f-8d07-f825f12b9147",
+        "first_name": "Kelly",
+        "last_name": "Slater",
+        "email": "kelly.slater2@gmail.com",
+        "is_admin": true,
+        "places": [
+            "e445db89-5ae7-410e-b397-adbee451ce89"
+        ],
+        "created_at": "2024-10-23T10:29:04.624614",
+        "updated_at": "2024-10-23T10:29:39.337747"
     }
 }

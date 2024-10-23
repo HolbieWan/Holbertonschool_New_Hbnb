@@ -48,5 +48,25 @@
         "user": "196e4433-db28-49e1-a382-2a0e56982894",
         "created_at": "2024-10-22T17:20:37.768252",
         "updated_at": "2024-10-22T17:20:37.768258"
+    },
+    "51e402c8-714d-4919-b200-87c0702a2acd": {
+        "type": "review",
+        "id": "51e402c8-714d-4919-b200-87c0702a2acd",
+        "text": "This place is relaxing",
+        "rating": 3,
+        "place": "e445db89-5ae7-410e-b397-adbee451ce89",
+        "user": "196e4433-db28-49e1-a382-2a0e56982894",
+        "created_at": "2024-10-23T10:33:31.083400",
+        "updated_at": "2024-10-23T10:33:31.083407"
+    },
+    "6b547391-18e2-4dc2-8b14-89741e6be7ce": {
+        "type": "review",
+        "id": "6b547391-18e2-4dc2-8b14-89741e6be7ce",
+        "text": "This place is the best !",
+        "rating": 3,
+        "place": "e445db89-5ae7-410e-b397-adbee451ce89",
+        "user": "14bd6576-0361-463d-8d32-8a24ab8c5cb7",
+        "created_at": "2024-10-23T10:33:53.336367",
+        "updated_at": "2024-10-23T10:33:53.336372"
     }
 }
