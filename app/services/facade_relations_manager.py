@@ -1,4 +1,4 @@
-
+from app.models.amenity import Amenity
 
 class FacadeRelationManager:
     def __init__(self, user_facade, place_facade, amenity_facade, review_facade):
@@ -57,18 +57,20 @@ class FacadeRelationManager:
  #  Place - Amenity relations
  # <------------------------------------------------------------------------>
 
-    def create_amenity_for_place(self, place_id, amenity_data):
+    def add_amenity_to_a_place(self, place_id, amenity_data):
         place = self.place_facade.place_repo.get(place_id)
 
         if not place:
             raise ValueError(f"Place: {place_id} not found.")
 
+        if not amenity_data["name"] in place.amenities:
+            place.amenities.append(amenity_data['name'])
+            self.place_facade.place_repo.update(place_id, place.to_dict())
+
         amenity = self.amenity_facade.create_amenity(amenity_data)
-        place.amenities.append(amenity['id'])
-        self.place_facade.place_repo.update(place_id, place.to_dict())
 
         return amenity
-    
+
         # <------------------------------------------>
 
     def get_all_amenities_id_from_place(self, place_id):
@@ -83,7 +85,19 @@ class FacadeRelationManager:
 
         # <------------------------------------------>
 
-    def delete_amenity_from_place_list(self, amenity_id, place_id):
+    def get_list_amenities_names_from_place(self, place_id):
+        place = self.place_facade.place_repo.get(place_id)
+
+        if not place:
+            raise ValueError(f"Place: {place_id} not found")
+        
+        amenities = place.amenities
+
+        return amenities
+
+        # <------------------------------------------>
+
+    def delete_amenity_from_place_list(self, amenity_name, place_id):
         place = self.place_facade.place_repo.get(place_id)
 
         if not place:
@@ -91,13 +105,13 @@ class FacadeRelationManager:
         
         amenities = place.amenities
 
-        if amenity_id in amenities:
-            amenities.remove(amenity_id)
+        if amenity_name in amenities:
+            amenities.remove(amenity_name)
             self.place_facade.place_repo.update(place_id, place.to_dict())
         else:
-            print(f"Amenity {amenity_id} not found in places amenities list.")
+            print(f"Amenity {amenity_name} not found in places amenities list.")
 
-        self.amenity_facade.amenity_repo.delete(amenity_id)
+        self.amenity_facade.amenity_repo.delete(amenity_name)
 
 # #  Place - review relations
 # # <------------------------------------------------------------------------>

@@ -1,142 +1,48 @@
 {
-    "55c0a18f-83cb-4938-b949-c6e36e612bf7": {
+    "b8bf4d6f-7f4e-4201-ab6e-3b1287c40f46": {
         "type": "place",
-        "id": "55c0a18f-83cb-4938-b949-c6e36e612bf7",
-        "title": "Chez Brad",
-        "description": "C'est la Teuf chez Brad",
-        "price": 99.0,
-        "latitude": 47.2184,
-        "longitude": -1.5536,
-        "owner_id": "14bd6576-0361-463d-8d32-8a24ab8c5cb7",
-        "reviews": [
-            "af4b15cc-7ab9-4107-8b98-39f30e4afdd0",
-            "74035680-19b2-4166-b305-272c499a4853"
-        ],
-        "amenities": [
-            "b3989851-41d2-49c2-bc2c-eb8490e6909c"
-        ],
-        "created_at": "2024-10-21T10:46:42.578352",
-        "updated_at": "2024-10-22T17:24:37.010047"
-    },
-    "e445db89-5ae7-410e-b397-adbee451ce89": {
-        "type": "place",
-        "id": "e445db89-5ae7-410e-b397-adbee451ce89",
-        "title": "King kelly's place!",
-        "description": "Tout se d\u00e9roule sans accro",
-        "price": 99.0,
-        "latitude": 47.2184,
-        "longitude": -1.5536,
-        "owner_id": "b7b76c98-13aa-428f-8d07-f825f12b9147",
-        "reviews": [
-            "6b547391-18e2-4dc2-8b14-89741e6be7ce"
-        ],
-        "amenities": [
-            "BBQ",
-            "piscine",
-            "64e941de-8086-4c81-92a0-6d0082c8281f"
-        ],
-        "created_at": "2024-10-23T10:29:39.337364",
-        "updated_at": "2024-10-23T10:33:53.336675"
-    },
-    "691b1f0d-c29d-4ccd-a7cf-00c37777631f": {
-        "type": "place",
-        "id": "691b1f0d-c29d-4ccd-a7cf-00c37777631f",
-        "title": "string",
-        "description": "string",
-        "price": 50.0,
-        "latitude": 0.0,
-        "longitude": 0.0,
-        "owner_id": "1fdb1c5a-9862-4b28-85fa-cd42c119557e",
-        "reviews": [],
-        "amenities": [
-            "string"
-        ],
-        "created_at": "2024-10-24T11:53:50.572151",
-        "updated_at": "2024-10-24T11:53:50.572157"
-    },
-    "b2fd963e-292c-465c-a75b-72447f68f520": {
-        "type": "place",
-        "id": "b2fd963e-292c-465c-a75b-72447f68f520",
+        "id": "b8bf4d6f-7f4e-4201-ab6e-3b1287c40f46",
         "title": "Chez Johnny",
         "description": "The rocker place",
-        "price": 150.0,
+        "price": 400.5,
         "latitude": 23.2356,
         "longitude": 54.4577,
-        "owner_id": "1d3ed1be-4a1b-42a7-a247-7e8b6e109705",
-        "reviews": [],
+        "owner_first_name": "Johnny",
+        "owner_id": "007c0cdd-c2d1-4232-b262-6314522aca45",
+        "reviews": [
+            ""
+        ],
         "amenities": [
             "BBQ",
             "Jacuzzi"
         ],
-        "created_at": "2024-10-24T12:24:18.990300",
-        "updated_at": "2024-10-24T12:24:18.990305"
+        "created_at": "2024-10-25T10:18:54.279291",
+        "updated_at": "2024-10-25T19:24:00.955514"
     },
-    "aeeb5a64-8007-42c1-be8d-9d7620810c0e": {
+    "87991657-0570-4f97-9641-2052812d924b": {
         "type": "place",
-        "id": "aeeb5a64-8007-42c1-be8d-9d7620810c0e",
-        "title": "Chez Johnny 2",
-        "description": "The rocker place",
-        "price": 150.0,
-        "latitude": 23.2356,
-        "longitude": 54.4577,
-        "owner_id": "1d3ed1be-4a1b-42a7-a247-7e8b6e109705",
-        "reviews": [],
-        "amenities": [
-            "BBQ",
-            "Jacuzzi"
-        ],
-        "created_at": "2024-10-24T12:25:46.903485",
-        "updated_at": "2024-10-24T12:25:46.903489"
-    },
-    "384d3f23-fb12-4969-aa7f-e64765859192": {
-        "type": "place",
-        "id": "384d3f23-fb12-4969-aa7f-e64765859192",
+        "id": "87991657-0570-4f97-9641-2052812d924b",
         "title": "Chez Johnny 3",
         "description": "The rocker place",
         "price": 150.5,
         "latitude": 23.2356,
         "longitude": 54.4577,
-        "owner_id": "1d3ed1be-4a1b-42a7-a247-7e8b6e109705",
+        "owner_first_name": "Johnny",
+        "owner_id": "007c0cdd-c2d1-4232-b262-6314522aca45",
         "reviews": [],
         "amenities": [
+            "Trampoline",
+            "Hamam",
+            "Piscine",
+            "Zobi",
+            "Massage",
+            "Balancoire",
             "BBQ",
-            "Jacuzzi"
+            "Surf",
+            "Sauna",
+            "Pedalo"
         ],
-        "created_at": "2024-10-24T12:27:33.807223",
-        "updated_at": "2024-10-24T12:27:33.807228"
-    },
-    "26b3d64a-41a5-4dc3-a547-b84274398069": {
-        "type": "place",
-        "id": "26b3d64a-41a5-4dc3-a547-b84274398069",
-        "title": "Chez Johnny 4",
-        "description": "The rocker place",
-        "price": 150.5,
-        "latitude": 23.2356,
-        "longitude": 54.4577,
-        "owner_id": "1d3ed1be-4a1b-42a7-a247-7e8b6e109705",
-        "reviews": [],
-        "amenities": [
-            "BBQ",
-            "Jacuzzi"
-        ],
-        "created_at": "2024-10-24T12:30:09.273510",
-        "updated_at": "2024-10-24T12:30:09.273514"
-    },
-    "625722b4-db11-4373-95d0-b5b60b5d9923": {
-        "type": "place",
-        "id": "625722b4-db11-4373-95d0-b5b60b5d9923",
-        "title": "Chez Johnny 5",
-        "description": "The rocker place",
-        "price": 150.5,
-        "latitude": 23.2356,
-        "longitude": 54.4577,
-        "owner_id": "1d3ed1be-4a1b-42a7-a247-7e8b6e109705",
-        "reviews": [],
-        "amenities": [
-            "BBQ",
-            "Jacuzzi"
-        ],
-        "created_at": "2024-10-24T12:31:29.708294",
-        "updated_at": "2024-10-24T12:31:29.708301"
+        "created_at": "2024-10-25T11:07:01.748245",
+        "updated_at": "2024-10-25T19:16:32.900598"
     }
 }

@@ -16,6 +16,7 @@ class PlaceFacade():
             price = place_data["price"],
             latitude = place_data["latitude"],
             longitude = place_data["longitude"],
+            owner_first_name= place_data["owner_first_name"],
             owner_id = place_data["owner_id"],
             amenities = place_data["amenities"]
         )

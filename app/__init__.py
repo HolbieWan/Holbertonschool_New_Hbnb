@@ -1,3 +1,4 @@
+# app/__init__.py
 import os
 from flask import Flask
 from flask_restx import Api
@@ -7,6 +8,11 @@ from app.api.v1.routes_users import users_bp
 from app.api.v1.routes_places import places_bp
 from app.api.v1.routes_amenities import amenities_bp
 from app.api.v1.routes_reviews import reviews_bp
+
+from app.api.v1.routes_users import api as users_ns
+from app.api.v1.routes_places import api as places_ns
+from app.api.v1.routes_amenities import api as amenities_ns
+from app.api.v1.routes_reviews import api as reviews_ns
 
 from app.services.facade import HBnBFacade
 from app.services.facade_user import UserFacade
@@ -20,8 +26,8 @@ from app.persistence.repo_selector import RepoSelector
 def create_app(config_name='default'):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
-
-    api = Api(app, version="1.0", title="HBnB API", description="HBnB application API")
+    api = Api(app, version='1.0', title='HBnB API', description='HBnB Application API')
+    
 
     # Initialize repositories
     repo_type = app.config.get('REPO_TYPE', 'in_memory')
@@ -53,5 +59,11 @@ def create_app(config_name='default'):
     app.register_blueprint(places_bp)
     app.register_blueprint(amenities_bp)
     app.register_blueprint(reviews_bp)
+
+    # Register the namespaces
+    api.add_namespace(users_ns, path='/api/v1/users')
+    api.add_namespace(places_ns, path='/api/v1/places')
+    api.add_namespace(amenities_ns, path='/api/v1/amenities')
+    api.add_namespace(reviews_ns, path='/api/v1/reviews')
 
     return app

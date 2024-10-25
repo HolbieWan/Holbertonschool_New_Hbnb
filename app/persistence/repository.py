@@ -66,7 +66,7 @@ class InMemoryRepository(Repository):
 class InFileRepository(InMemoryRepository):
 
     def __init__(self, file_name):
-        self.path = f"/root/Holbertonschool_New_Hbnb/app/data/{file_name}"
+        self.path = f"/root/Holbertonschool_New_Hbnb_with_swagger/app/data/{file_name}"
         self._storage = {}
 
         if not os.path.exists(self.path):
@@ -116,6 +116,7 @@ class InFileRepository(InMemoryRepository):
                 price=obj_data['price'],
                 latitude=obj_data['latitude'],
                 longitude=obj_data['longitude'],
+                owner_first_name=obj_data['owner_first_name'],
                 owner_id=obj_data['owner_id'],
                 amenities=obj_data['amenities'],
                 reviews=obj_data['reviews']
@@ -131,7 +132,8 @@ class InFileRepository(InMemoryRepository):
             review = Review(
                 text=obj_data['text'],
                 rating=obj_data['rating'],
-                place=obj_data['place'],
+                place_id=obj_data['place_id'],
+                place_name=obj_data['place_name'],
                 user=obj_data['user']
             )
 

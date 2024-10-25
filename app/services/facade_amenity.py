@@ -71,7 +71,7 @@ class AmenityFacade():
     #   <------------------------------------------------------------------------>
 
     def get_all_amenitys_from_place_id(self, place_id):
-        amenities = self.amenity_repo.get_by_attribute("owner_id", place_id)
+        amenities = self.amenity_repo.get_by_attribute("id", place_id)
         if amenities:
             return [amenity.to_dict() for amenity in amenities]
         else:
