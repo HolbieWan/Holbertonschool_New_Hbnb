@@ -51,7 +51,7 @@ def test_add_place():
         price=200,
         latitude=30,
         longitude=100,
-        owner=user1)
+        owner_id=user1)
 
     user1.add_place(place1)
 
