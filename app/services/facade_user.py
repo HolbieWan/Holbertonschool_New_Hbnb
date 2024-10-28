@@ -1,5 +1,5 @@
 from app.models.user import User
-
+from email_validator import EmailNotValidError
 
 class UserFacade():
 
@@ -15,22 +15,22 @@ class UserFacade():
             first_name=user_data["first_name"], 
             last_name=user_data["last_name"],
             email=user_data["email"],
+            password=user_data["password"],
             is_admin=user_data["is_admin"]
         )
 
         existing_user = self.user_repo.get_by_attribute("email", user.email)
+        
         if existing_user:
-            print(f"User {user.first_name} {user.last_name} already exists.")
             raise ValueError(f"User with email: {user.email} already exists.")
 
-        if user.is_valid():
-            print(f"User {user.first_name} {user.last_name} passed validation.")
-            self.user_repo.add(user)  
-            return user.to_dict()
-        else:
-            print(f"User {user.first_name} {user.last_name} failed validation.")
-            raise ValueError("Invalid user data.")
-        
+        if not user.is_valid():
+            raise ValueError("User validation failed. Please check the email and other attributes.")
+
+        print(f"User {user.first_name} {user.last_name} passed validation.")
+        self.user_repo.add(user)
+        return user.to_dict()
+
     #   <------------------------------------------------------------------------>
 
     def get_user(self, user_id):

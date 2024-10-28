@@ -1,48 +1,38 @@
 {
-    "b8bf4d6f-7f4e-4201-ab6e-3b1287c40f46": {
+    "cd2155a2-0c36-4634-86b2-dfc91a7451f2": {
         "type": "place",
-        "id": "b8bf4d6f-7f4e-4201-ab6e-3b1287c40f46",
-        "title": "Chez Johnny",
-        "description": "The rocker place",
-        "price": 400.5,
-        "latitude": 23.2356,
-        "longitude": 54.4577,
-        "owner_first_name": "Johnny",
-        "owner_id": "007c0cdd-c2d1-4232-b262-6314522aca45",
-        "reviews": [
-            ""
-        ],
-        "amenities": [
-            "BBQ",
-            "Jacuzzi"
-        ],
-        "created_at": "2024-10-25T10:18:54.279291",
-        "updated_at": "2024-10-25T19:24:00.955514"
-    },
-    "87991657-0570-4f97-9641-2052812d924b": {
-        "type": "place",
-        "id": "87991657-0570-4f97-9641-2052812d924b",
-        "title": "Chez Johnny 3",
+        "id": "cd2155a2-0c36-4634-86b2-dfc91a7451f2",
+        "title": "Chez Johnny Be Good",
         "description": "The rocker place",
         "price": 150.5,
         "latitude": 23.2356,
         "longitude": 54.4577,
         "owner_first_name": "Johnny",
-        "owner_id": "007c0cdd-c2d1-4232-b262-6314522aca45",
+        "owner_id": "0defc403-97f3-4784-83c2-363dd7982c61",
         "reviews": [],
         "amenities": [
-            "Trampoline",
-            "Hamam",
-            "Piscine",
-            "Zobi",
-            "Massage",
-            "Balancoire",
             "BBQ",
-            "Surf",
-            "Sauna",
-            "Pedalo"
+            "Jacuzzi"
         ],
-        "created_at": "2024-10-25T11:07:01.748245",
-        "updated_at": "2024-10-25T19:16:32.900598"
+        "created_at": "2024-10-28T17:51:39.167524",
+        "updated_at": "2024-10-28T17:51:39.167555"
+    },
+    "1b3ed7c2-8047-4989-ba17-2da44f78104d": {
+        "type": "place",
+        "id": "1b3ed7c2-8047-4989-ba17-2da44f78104d",
+        "title": "Chez Johnny",
+        "description": "The rocker place",
+        "price": 150.5,
+        "latitude": 23.2356,
+        "longitude": 54.4577,
+        "owner_first_name": "Johnny",
+        "owner_id": "0defc403-97f3-4784-83c2-363dd7982c61",
+        "reviews": [],
+        "amenities": [
+            "BBQ",
+            "Jacuzzi"
+        ],
+        "created_at": "2024-10-28T17:51:50.911530",
+        "updated_at": "2024-10-28T17:51:50.911535"
     }
 }

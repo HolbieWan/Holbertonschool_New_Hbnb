@@ -48,7 +48,7 @@ class FacadeRelationManager:
             places.remove(place_id)
             self.user_facade.user_repo.update(user_id, user.to_dict())
         else:
-            print(f"Place ID {place_id} not found in user's places list.")
+            raise ValueError(f"Place ID {place_id} not found in user's places list.")
 
         self.place_facade.place_repo.delete(place_id)
 
@@ -81,17 +81,23 @@ class FacadeRelationManager:
         
         amenities = place.amenities
 
+        if not amenities:
+            raise ValueError(f"No amenities found for the place: {place_id}")
+
         return amenities
 
         # <------------------------------------------>
 
-    def get_list_amenities_names_from_place(self, place_id):
+    def get_all_amenities_names_from_place(self, place_id):
         place = self.place_facade.place_repo.get(place_id)
 
         if not place:
             raise ValueError(f"Place: {place_id} not found")
         
         amenities = place.amenities
+
+        if not amenities:
+            raise ValueError(f"No amenities found for this place: {place_id}")
 
         return amenities
 
@@ -109,7 +115,7 @@ class FacadeRelationManager:
             amenities.remove(amenity_name)
             self.place_facade.place_repo.update(place_id, place.to_dict())
         else:
-            print(f"Amenity {amenity_name} not found in places amenities list.")
+            raise ValueError(f"Amenity {amenity_name} not found in places_amenities list.")
 
         self.amenity_facade.amenity_repo.delete(amenity_name)
 
@@ -130,11 +136,34 @@ class FacadeRelationManager:
     
 #         # <------------------------------------------>
 
+    def get_all_reviews_dict_from_place(self, place_id):
+        place = self.place_facade.place_repo.get(place_id)
+
+        if not place:
+            raise ValueError(f"User with id: {place_id} not found")
+        
+        reviews_id = place.reviews
+
+        reviews_dict_list = []
+
+        for review_id in reviews_id:
+            review = self.review_facade.review_repo.get(review_id)
+            review_dict = review.to_dict()
+            reviews_dict_list.append(review_dict)
+
+        if not reviews_dict_list:
+            raise ValueError(f"No reviews found for this place: {place_id}")
+
+        return reviews_dict_list
+    
+#         # <------------------------------------------>
+
+
     def get_all_reviews_id_from_place(self, place_id):
         place = self.place_facade.place_repo.get(place_id)
 
         if not place:
-            raise ValueError(f"Usier with id: {place_id} not found")
+            raise ValueError(f"User with id: {place_id} not found")
         
         reviews = place.reviews
 
@@ -154,6 +183,6 @@ class FacadeRelationManager:
             reviews.remove(review_id)
             self.place_facade.place_repo.update(place_id, place.to_dict())
         else:
-            print(f"Review {review_id} not found in places reviews list.")
+            raise ValueError(f"Review with id: {review_id} not found")
 
         self.review_facade.review_repo.delete(review_id)

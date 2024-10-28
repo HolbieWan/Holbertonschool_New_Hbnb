@@ -1,93 +1,9 @@
 {
-    "eebfb6a3-9ff0-4ae7-bbf7-3f60ccf8901f": {
+    "a47efcbc-08c0-4c2a-a758-4019946a2608": {
         "type": "amenity",
-        "id": "eebfb6a3-9ff0-4ae7-bbf7-3f60ccf8901f",
-        "name": "Trampoline",
-        "created_at": "2024-10-25T13:36:40.101291",
-        "updated_at": "2024-10-25T13:36:40.101296"
-    },
-    "fbb4344a-b0f8-4f5a-96ca-8445db51f44c": {
-        "type": "amenity",
-        "id": "fbb4344a-b0f8-4f5a-96ca-8445db51f44c",
-        "name": "Hamam",
-        "created_at": "2024-10-25T13:51:07.205793",
-        "updated_at": "2024-10-25T13:51:07.205809"
-    },
-    "542f5083-b6aa-4549-ae39-8af0d833d9b2": {
-        "type": "amenity",
-        "id": "542f5083-b6aa-4549-ae39-8af0d833d9b2",
-        "name": "Piscine",
-        "created_at": "2024-10-25T13:59:59.419442",
-        "updated_at": "2024-10-25T13:59:59.419453"
-    },
-    "201aa378-01c3-4673-ae94-7ac5ae708471": {
-        "type": "amenity",
-        "id": "201aa378-01c3-4673-ae94-7ac5ae708471",
-        "name": "Zobi",
-        "created_at": "2024-10-25T14:03:55.042381",
-        "updated_at": "2024-10-25T14:03:55.042386"
-    },
-    "5ead6a1f-16b1-45c8-ad7d-62b21d11932d": {
-        "type": "amenity",
-        "id": "5ead6a1f-16b1-45c8-ad7d-62b21d11932d",
-        "name": "Massage",
-        "created_at": "2024-10-25T14:10:21.090991",
-        "updated_at": "2024-10-25T14:10:21.090998"
-    },
-    "881ec625-26ad-41ac-92cb-02de8f17e62f": {
-        "type": "amenity",
-        "id": "881ec625-26ad-41ac-92cb-02de8f17e62f",
-        "name": "Balancoire",
-        "created_at": "2024-10-25T15:08:25.069877",
-        "updated_at": "2024-10-25T15:08:25.069883"
-    },
-    "88bbde94-119c-4bbb-858c-dde97b5df2a1": {
-        "type": "amenity",
-        "id": "88bbde94-119c-4bbb-858c-dde97b5df2a1",
-        "name": "BBQ",
-        "created_at": "2024-10-25T15:17:39.977243",
-        "updated_at": "2024-10-25T15:17:39.977255"
-    },
-    "e1b5309c-0dd7-41a1-b49d-9767e08520b1": {
-        "type": "amenity",
-        "id": "e1b5309c-0dd7-41a1-b49d-9767e08520b1",
-        "name": "Surf",
-        "created_at": "2024-10-25T16:36:15.047093",
-        "updated_at": "2024-10-25T16:36:15.047097"
-    },
-    "ede985d7-3f7d-4f6a-a4e0-e0113cc9c845": {
-        "type": "amenity",
-        "id": "ede985d7-3f7d-4f6a-a4e0-e0113cc9c845",
+        "id": "a47efcbc-08c0-4c2a-a758-4019946a2608",
         "name": "Sauna",
-        "created_at": "2024-10-25T17:16:33.172688",
-        "updated_at": "2024-10-25T17:16:33.172693"
-    },
-    "b765ef22-7bbc-448e-92e6-a7e89421216d": {
-        "type": "amenity",
-        "id": "b765ef22-7bbc-448e-92e6-a7e89421216d",
-        "name": "Velo",
-        "created_at": "2024-10-25T17:20:48.733376",
-        "updated_at": "2024-10-25T17:20:48.733380"
-    },
-    "34490070-16ed-4405-8365-aeaebc0dd309": {
-        "type": "amenity",
-        "id": "34490070-16ed-4405-8365-aeaebc0dd309",
-        "name": "Pedalo",
-        "created_at": "2024-10-25T18:36:42.412387",
-        "updated_at": "2024-10-25T18:36:42.412395"
-    },
-    "332f29af-4984-4535-b13c-c9af520a0099": {
-        "type": "amenity",
-        "id": "332f29af-4984-4535-b13c-c9af520a0099",
-        "name": "Pedalo2",
-        "created_at": "2024-10-25T18:37:45.129600",
-        "updated_at": "2024-10-25T18:37:45.129605"
-    },
-    "60f9b487-8999-47c2-b166-888e6dca6bd6": {
-        "type": "amenity",
-        "id": "60f9b487-8999-47c2-b166-888e6dca6bd6",
-        "name": "Pedalo3",
-        "created_at": "2024-10-25T18:41:45.461882",
-        "updated_at": "2024-10-25T18:41:45.461887"
+        "created_at": "2024-10-28T16:46:41.382829",
+        "updated_at": "2024-10-28T16:46:41.382831"
     }
 }

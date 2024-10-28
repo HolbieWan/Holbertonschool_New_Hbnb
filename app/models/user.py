@@ -3,12 +3,12 @@ from email_validator import validate_email, EmailNotValidError
 
 
 class User(BaseModel):
-    def __init__(self, first_name, last_name, email, is_admin=False):
+    def __init__(self, first_name, last_name, email, password, is_admin=False):
         super().__init__()
-        self.type = type
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
+        self.password = password
         self.is_admin = is_admin
         self.places = []
 
@@ -17,28 +17,22 @@ class User(BaseModel):
     
     def is_valid(self):
         try:
-            if not all(isinstance(attr, str) for attr in [self.email, self.first_name, self.last_name]):
-                print("Validation failed: First name, last name, or email is not a string.")
-                raise TypeError("email, first_name, and last_name must be strings (str).")
+            if not all(isinstance(attr, str) for attr in [self.email, self.first_name, self.last_name, self.password]):
+                raise TypeError("email, password, first_name, and last_name must be strings.")
 
-            if len(self.first_name) > 50 or len(self.first_name) == 0 or len(self.last_name) > 50  or len(self.last_name) == 0 :
-                print("Validation failed: First name or last name exceeds 50 characters.")
-                raise ValueError("first_name and last_name must not be empty and less than 50 characters.")
+            if not (0 < len(self.first_name) <= 50) or not (0 < len(self.last_name) <= 50):
+                raise ValueError("first_name and last_name must not be empty and should be less than 50 characters.")
 
-            valid = validate_email(self.email)
-            return True
+            validate_email(self.email)
 
         except TypeError as te:
-            print(f"Type error: {str(te)}")
-            return False
-        
+            raise ValueError(f"Type error: {str(te)}")
         except EmailNotValidError as e:
-            print(f"Email validation failed: {str(e)}")
-            return False
-
+            raise ValueError(f"Email validation failed: {str(e)}")
         except ValueError as ve:
-            print(f"Value error: {str(ve)}")
-            return False
+            raise ValueError(f"Value error: {str(ve)}")
+        
+        return True
 
     def to_dict(self):
         return {
@@ -47,6 +41,7 @@ class User(BaseModel):
             "first_name" : self.first_name,
             "last_name" : self.last_name,
             "email" : self.email,
+            "password" : self.password,
             "is_admin" : self.is_admin,
             "places" : self.places,
             "created_at" : self.created_at.isoformat(),

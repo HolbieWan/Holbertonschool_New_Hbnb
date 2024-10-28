@@ -14,8 +14,10 @@ class ReviewFacade():
         review = Review(
             text = review_data["text"],
             rating = review_data["rating"],
-            place = review_data["place"],
-            user = review_data["user"]
+            place_id = review_data["place_id"],
+            place_name=review_data["place_name"],
+            user_id = review_data["user_id"],
+            user_first_name=review_data["user_first_name"]
         )
 
         existing_review = self.review_repo.get_by_attribute("id", review.id)

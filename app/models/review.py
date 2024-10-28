@@ -1,16 +1,15 @@
 from app.models.base_model import BaseModel
-from app.models.place import Place
-from app.models.user import User
 
 
 class Review(BaseModel):
-    def __init__(self, text, rating, place_id, place_name, user):
+    def __init__(self, text, rating, place_id, place_name, user_id, user_first_name):
         super().__init__()
         self.text = text
         self.rating = rating
         self.place_id = place_id
         self.place_name = place_name
-        self.user = user
+        self.user_id = user_id
+        self.user_first_name = user_first_name
 
     def is_valid(self):
         try:
@@ -23,7 +22,7 @@ class Review(BaseModel):
             if self.rating < 1 or self.rating > 5:
                 raise ValueError("rating must be between 1 and 5.")
             
-            if self.text == "" or self.place_name == "" or self.place_id == "" or self.user == "":
+            if self.text == "" or self.place_name == "" or self.place_id == "" or self.user_id == "" or self.user_first_name=="":
                 raise ValueError("Fields can not be empty !")
             
             return True
@@ -44,7 +43,8 @@ class Review(BaseModel):
             "rating" : self.rating,
             "place_id" : self.place_id,
             "place_name" : self.place_name,
-            "user" : self.user,
+            "user_id" : self.user_id,
+            "user_first_name" : self.user_first_name,
             "created_at" : self.created_at.isoformat(),
             "updated_at" : self.updated_at.isoformat()
         }
