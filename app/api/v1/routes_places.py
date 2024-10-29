@@ -114,15 +114,27 @@ class PlaceResource(Resource):
         
         except ValueError as e:
             abort(400, str(e))
+
+    # @api.doc('delete_place')
+    # def delete(self, place_id):
+    #     """Delete a place and associated instances"""
+    #     facade = current_app.extensions['HBNB_FACADE']
+        
+    #     try:
+    #         facade.place_facade.delete_place(place_id)
+
+    #         return {"message": f"Place: {place_id} has been deleted"}, 200
+        
+    #     except ValueError as e:
+    #         abort(400, str(e))
     
     @api.doc('delete_place')
-    @api.marshal_with(place_model)
     def delete(self, place_id):
-        """Delete a place"""
-        facade = current_app.extensions['HBNB_FACADE']
+        """Delete a place and associated instances"""
+        facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
         
         try:
-            facade.place_facade.delete_place(place_id)
+            facade_relation_manager.delete_place_and_associated_instances(place_id)
 
             return {"message": f"Place: {place_id} has been deleted"}, 200
         

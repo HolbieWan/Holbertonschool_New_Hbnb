@@ -142,14 +142,26 @@ class UserResource(Resource):
             abort(400, str(e))
 
 
+    # @api.doc('delete_user')
+    # def delete(self, user_id):
+    #     """Delete a user"""
+    #     facade = current_app.extensions['HBNB_FACADE']
+
+    #     try:
+    #         facade.user_facade.delete_user(user_id)
+    #         return {"message": f"User: {user_id} has been deleted"}, 200
+        
+    #     except ValueError as e:
+    #         abort(400, str(e))
+
+
     @api.doc('delete_user')
-    @api.response(204, 'User deleted')
     def delete(self, user_id):
-        """Delete a user"""
-        facade = current_app.extensions['HBNB_FACADE']
+        """Delete a user and associated instances"""
+        facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
 
         try:
-            facade.user_facade.delete_user(user_id)
+            facade_relation_manager.delete_user_and_associated_instances(user_id)
             return {"message": f"User: {user_id} has been deleted"}, 200
         
         except ValueError as e:

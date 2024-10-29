@@ -1,9 +1,16 @@
 {
-    "b6fbd49f-bb88-4ae0-a20b-025530b0d631": {
+    "9bf6141f-40b3-4304-a8fd-332a3867f73a": {
         "type": "amenity",
-        "id": "b6fbd49f-bb88-4ae0-a20b-025530b0d631",
-        "name": "Cabane",
-        "created_at": "2024-10-29T15:04:12.291320",
-        "updated_at": "2024-10-29T15:04:12.291326"
+        "id": "9bf6141f-40b3-4304-a8fd-332a3867f73a",
+        "name": "Sauna",
+        "created_at": "2024-10-29T17:51:57.849025",
+        "updated_at": "2024-10-29T17:51:57.849027"
+    },
+    "58febf90-99cd-433a-8823-d37b2c19c9c4": {
+        "type": "amenity",
+        "id": "58febf90-99cd-433a-8823-d37b2c19c9c4",
+        "name": "Jardin",
+        "created_at": "2024-10-29T17:56:25.236276",
+        "updated_at": "2024-10-29T17:56:25.236279"
     }
 }

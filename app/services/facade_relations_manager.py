@@ -48,9 +48,9 @@ class FacadeRelationManager:
             raise ValueError(f"No place found for this user: {user_id}")
     
         return places_dict_list
-        
-        # <------------------------------------------>
 
+    # <------------------------------------------>
+    
     def delete_place_from_owner_place_list(self, place_id, user_id):
         user = self.user_facade.user_repo.get(user_id)
 
@@ -65,6 +65,61 @@ class FacadeRelationManager:
             raise ValueError(f"Place ID {place_id} not found in user's places list.")
 
         self.place_facade.place_repo.delete(place_id)
+
+        # <------------------------------------------>
+
+    def delete_user_and_associated_instances(self, user_id):
+        try:
+            user = self.user_facade.user_repo.get(user_id)
+
+            if not user:
+                raise ValueError(f"User with id: {user_id} not found")
+            
+            places_ids_list = user.places
+            if places_ids_list:
+                for place_id in places_ids_list:
+                    self.delete_place_and_associated_instances(place_id)
+            
+            else:
+                raise ValueError(f"No corresponding place found for this user")
+            
+        except ValueError as e:
+            print(f"Une erreur est survenue : {str(e)}")
+
+        finally:
+            self.user_facade.user_repo.delete(user_id)
+        
+        # <------------------------------------------>
+
+    def delete_place_and_associated_instances(self, place_id):
+        try:
+            place = self.place_facade.place_repo.get(place_id)
+            user_id = place.owner_id
+            user = self.user_facade.user_repo.get(user_id)
+
+            if not user:
+                raise ValueError(f"User with id: {user_id} not found")
+            
+            user_places = user.places
+
+            if place_id in user_places:
+                user_places.remove(place_id)
+                self.user_facade.user_repo.update(user_id, user.to_dict())
+            else:
+                raise ValueError(f"Place ID {place_id} not found in user's places list.")
+
+            reviews_ids_list = place.reviews
+            if reviews_ids_list:
+                for review_id in reviews_ids_list:
+                    self.review_facade.review_repo.delete(review_id)
+            else:
+                raise ValueError(f"No corresponding review found for this place.")
+            
+        except ValueError as e:
+            print(f"Une erreur est survenue : {str(e)}")
+
+        finally:
+            self.place_facade.place_repo.delete(place_id)
 
 
 
@@ -208,3 +263,5 @@ class FacadeRelationManager:
             raise ValueError(f"Review with id: {review_id} not found")
 
         self.review_facade.review_repo.delete(review_id)
+
+#         # <------------------------------------------>
