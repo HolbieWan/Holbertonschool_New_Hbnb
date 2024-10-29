@@ -1,9 +1,9 @@
 {
-    "a47efcbc-08c0-4c2a-a758-4019946a2608": {
+    "0ce6fef9-b3fd-41e2-96e6-f68b580611aa": {
         "type": "amenity",
-        "id": "a47efcbc-08c0-4c2a-a758-4019946a2608",
-        "name": "Sauna",
-        "created_at": "2024-10-28T16:46:41.382829",
-        "updated_at": "2024-10-28T16:46:41.382831"
+        "id": "0ce6fef9-b3fd-41e2-96e6-f68b580611aa",
+        "name": "Piscine",
+        "created_at": "2024-10-29T11:53:09.547702",
+        "updated_at": "2024-10-29T11:53:09.547708"
     }
 }

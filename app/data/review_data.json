@@ -1,14 +1,14 @@
 {
-    "1b501ce8-4e91-4eb9-a3a5-34a22eba7dbe": {
+    "e280c46e-3b28-424e-b864-737792145b70": {
         "type": "review",
-        "id": "1b501ce8-4e91-4eb9-a3a5-34a22eba7dbe",
-        "text": "Great place for a relaxing time",
+        "id": "e280c46e-3b28-424e-b864-737792145b70",
+        "text": "Very nice !",
         "rating": 4,
-        "place_id": "50075e7b-ba34-4a51-b57a-827d05562f94",
-        "place_name": "Chez Johnny 3",
-        "user_id": "0defc403-97f3-4784-83c2-363dd7982c61",
+        "place_id": "634d5cee-fe01-40c6-bec3-6c13c40b7511",
+        "place_name": "Chez Johnny",
+        "user_id": "1b40c729-f9af-4ac5-933c-5f049f3c9b5d",
         "user_first_name": "Johnny",
-        "created_at": "2024-10-28T17:18:20.250917",
-        "updated_at": "2024-10-28T17:18:20.250933"
+        "created_at": "2024-10-29T11:57:41.556379",
+        "updated_at": "2024-10-29T12:06:37.308764"
     }
 }

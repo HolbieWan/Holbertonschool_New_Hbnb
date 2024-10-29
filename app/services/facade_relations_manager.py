@@ -1,4 +1,4 @@
-from app.models.amenity import Amenity
+
 
 class FacadeRelationManager:
     def __init__(self, user_facade, place_facade, amenity_facade, review_facade):
@@ -25,15 +25,24 @@ class FacadeRelationManager:
     
         # <------------------------------------------>
 
-    def get_all_places_from_user_id(self, user_id):
+    def get_all_places_dict_from_user_place_id_list(self, user_id):
         user = self.user_facade.user_repo.get(user_id)
 
         if not user:
-            raise ValueError(f"Usier with id: {user_id} not found")
+            raise ValueError(f"User with id: {user_id} not found")
         
-        places = user.places
+        places_id_list = user.places
        
-        return places
+        places_dict_list = []
+
+        for place_id in places_id_list:
+            place = self.user_facade.user_repo.get(place_id)
+            places_dict_list.append(place)
+
+        if not places_dict_list:
+            raise ValueError(f"No place found for this user: {user_id}")
+    
+        return places_dict_list
         
         # <------------------------------------------>
 
@@ -136,20 +145,20 @@ class FacadeRelationManager:
     
 #         # <------------------------------------------>
 
-    def get_all_reviews_dict_from_place(self, place_id):
+    def get_all_reviews_dict_from_place_reviews_id_list(self, place_id):
         place = self.place_facade.place_repo.get(place_id)
 
         if not place:
             raise ValueError(f"User with id: {place_id} not found")
         
-        reviews_id = place.reviews
+        reviews_id_list = place.reviews
 
         reviews_dict_list = []
 
-        for review_id in reviews_id:
+        for review_id in reviews_id_list:
             review = self.review_facade.review_repo.get(review_id)
-            review_dict = review.to_dict()
-            reviews_dict_list.append(review_dict)
+            # review_dict = review.to_dict()
+            reviews_dict_list.append(review)
 
         if not reviews_dict_list:
             raise ValueError(f"No reviews found for this place: {place_id}")

@@ -8,8 +8,8 @@ place_model = api.model('Place', {
     'type': fields.String(required=False, description='Type will be given in response', example='place'),
     'id': fields.String(required=False, description='Id will be given in response', example=''),
     'title': fields.String(required=True, description='Name of the place', example='Chez Johnny'),
-    'amenities': fields.List(fields.String, required=True, description='List of amenities', example=["BBQ", "Jacuzzi"]),
-    'reviews': fields.List(fields.String, required=True, description='List of reviews', example=[""]),
+    'amenities': fields.List(fields.String, required=False, description='List of amenities', example=["BBQ", "Jacuzzi"]),
+    'reviews': fields.List(fields.String, required=False, description='List of reviews', example=[""]),
     'price': fields.Float(required=True, description='Price per night', example='150.50'),
     'description': fields.String(required=True, description='Description of the place', example='The rocker place'),
     'latitude': fields.Float(required=True, description='Latitude coordonates of the place', example='23.2356'),
@@ -23,6 +23,18 @@ place_model = api.model('Place', {
 # extended_place_model = api.inherit('ExtendedPlace', place_model, {
 #     'owner_name': fields.String(required=False, description='Name of the owner of those places')
 # })
+
+place_creation_model = api.model('Place_creation', {
+    'title': fields.String(required=True, description='Name of the place', example='Chez Johnny'),
+    'price': fields.Float(required=True, description='Price per night', example='150.50'),
+    'description': fields.String(required=True, description='Description of the place', example='The rocker place'),
+    'latitude': fields.Float(required=True, description='Latitude coordonates of the place', example='23.2356'),
+    'longitude': fields.Float(required=True, description='Longitude coordinates of the place', example='54.4577'),
+    'amenities': fields.List(fields.String, required=False, description='List of amenities', example=["BBQ", "Jacuzzi"]),
+    'reviews': fields.List(fields.String, required=False, description='List of reviews', example=[""]),
+    'owner_first_name': fields.String(required=False, description='First_name of the owner of those places', example="Johnny"),
+    'owner_id': fields.String(required=True, description='Id of the owner of the place', example='0defc403-97f3-4784-83c2-363dd7982c61'),
+})
 
 add_amenity_model = api.model('Add_amenity_model', {
     'name': fields.String(required=True, description='Name of the amenity', example='Sauna'),
@@ -58,20 +70,20 @@ get_all_reviews_success_model = api.model('GetAllReviews', {
 
 @api.route('/')
 class PlaceList(Resource):
-    @api.doc('create_place')
-    @api.expect(place_model)
-    @api.marshal_with(place_model, code=201) # type: ignore
-    def post(self):
-        """Create a new place for a user"""
-        facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
-        new_place_data = request.get_json()
-        user_id = new_place_data["owner_id"]
-        try:
-            place = facade_relation_manager.create_place_for_user(user_id, new_place_data)
-            return place, 201
+    # @api.doc('create_place')
+    # @api.expect(place_model)
+    # @api.marshal_with(place_model, code=201) # type: ignore
+    # def post(self):
+    #     """Create a new place for a user"""
+    #     facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
+    #     new_place_data = request.get_json()
+    #     user_id = new_place_data["owner_id"]
+    #     try:
+    #         place = facade_relation_manager.create_place_for_user(user_id, new_place_data)
+    #         return place, 201
 
-        except ValueError as e:
-            abort(400, str(e))
+    #     except ValueError as e:
+    #         abort(400, str(e))
     
     @api.doc('get_all_places')
     @api.marshal_list_with(place_model)
@@ -133,37 +145,37 @@ class PlaceResource(Resource):
 
  #   <------------------------------------------------------------------------>
 
-@api.route('/<string:owner_id>/places')
-@api.param('owner_id')
-class PlaceOwnerDetails(Resource):
-    @api.doc('get_places_by_owner')
-    @api.marshal_with(place_model)
-    def get(self, owner_id):
-        """Get all places from the owner_id"""
-        facade = current_app.extensions['HBNB_FACADE']
-        try:
-            places = facade.place_facade.get_all_places_from_owner_id(owner_id)
-        except ValueError as e:
-            abort(400, str(e))
-        return places, 200
+# @api.route('/<string:owner_id>/places')
+# @api.param('owner_id')
+# class PlaceOwnerDetails(Resource):
+#     @api.doc('get_places_by_owner')
+#     @api.marshal_with(place_model)
+#     def get(self, owner_id):
+#         """Get all places from the owner_id"""
+#         facade = current_app.extensions['HBNB_FACADE']
+#         try:
+#             places = facade.place_facade.get_all_places_from_owner_id(owner_id)
+#         except ValueError as e:
+#             abort(400, str(e))
+#         return places, 200
 
-#   <------------------------------------------------------------------------>
+# #   <------------------------------------------------------------------------>
 
-@api.route('/<string:user_id>/places')
-@api.param('user_id')
-class PlaceOwnerAndUserDetails(Resource):
-    @api.doc('get_places_by_user_id')
-    @api.marshal_with(place_model)
-    def get(self, user_id):
-        """Get all places from the user_id"""
-        facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
-        try:
-            places = facade_relation_manager.get_all_places_from_user_id(user_id)
-        except ValueError as e:
-            abort(400, str(e))
-        return places, 200
+# @api.route('/<string:user_id>/places')
+# @api.param('user_id')
+# class PlaceOwnerAndUserDetails(Resource):
+#     @api.doc('get_places_by_user_id')
+#     @api.marshal_with(place_model)
+#     def get(self, user_id):
+#         """Get all places from the user_id"""
+#         facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
+#         try:
+#             places = facade_relation_manager.get_all_places_from_user_id(user_id)
+#         except ValueError as e:
+#             abort(400, str(e))
+#         return places, 200
 
-#   <------------------------------------------------------------------------>
+# #   <------------------------------------------------------------------------>
 
 @api.route('/<string:place_id>/user')
 @api.param('place_id')
@@ -259,6 +271,7 @@ class AmenityPlaceDelete(Resource):
 
 @api.route('/<place_id>/reviews')
 @api.param('place_id', 'The place identifier')
+@api.param('user_id', 'The reviewer identifier')
 class ReviewPlaceList(Resource):
     @api.doc('add_review_to_a_place')
     @api.expect(add_review_model)
@@ -283,7 +296,7 @@ class ReviewPlaceList(Resource):
         facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
 
         try:
-            reviews_list = facade_relation_manager.get_all_reviews_dict_from_place(place_id)
+            reviews_list = facade_relation_manager.get_all_reviews_dict_from_place_reviews_id_list(place_id)
             reviews_response = {
                 "reviews": reviews_list
             }
@@ -297,7 +310,7 @@ class ReviewPlaceList(Resource):
 @api.param('place_id', 'The place identifier')
 @api.param('review_id', 'The review to delete from the place')
 class AmenityReviewDelete(Resource):
-    @api.doc('get_all_amenity_names_for_a_place')
+    @api.doc('delete_a_review_from_a_place')
     def delete(self, place_id, review_id):
         """Delete a review from a place"""
         facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']

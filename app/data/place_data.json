@@ -1,38 +1,37 @@
 {
-    "cd2155a2-0c36-4634-86b2-dfc91a7451f2": {
+    "634d5cee-fe01-40c6-bec3-6c13c40b7511": {
         "type": "place",
-        "id": "cd2155a2-0c36-4634-86b2-dfc91a7451f2",
+        "id": "634d5cee-fe01-40c6-bec3-6c13c40b7511",
         "title": "Chez Johnny Be Good",
-        "description": "The rocker place",
+        "description": "The rocker king",
         "price": 150.5,
         "latitude": 23.2356,
         "longitude": 54.4577,
         "owner_first_name": "Johnny",
-        "owner_id": "0defc403-97f3-4784-83c2-363dd7982c61",
-        "reviews": [],
-        "amenities": [
-            "BBQ",
-            "Jacuzzi"
+        "owner_id": "1b40c729-f9af-4ac5-933c-5f049f3c9b5d",
+        "reviews": [
+            ""
         ],
-        "created_at": "2024-10-28T17:51:39.167524",
-        "updated_at": "2024-10-28T17:51:39.167555"
+        "amenities": [],
+        "created_at": "2024-10-29T10:58:04.819825",
+        "updated_at": "2024-10-29T12:09:24.474746"
     },
-    "1b3ed7c2-8047-4989-ba17-2da44f78104d": {
+    "01a493c6-eb86-4530-95d3-a3a67f67e3d8": {
         "type": "place",
-        "id": "1b3ed7c2-8047-4989-ba17-2da44f78104d",
-        "title": "Chez Johnny",
-        "description": "The rocker place",
+        "id": "01a493c6-eb86-4530-95d3-a3a67f67e3d8",
+        "title": "Chez Jojo",
+        "description": "Jojo faya place",
         "price": 150.5,
         "latitude": 23.2356,
         "longitude": 54.4577,
         "owner_first_name": "Johnny",
-        "owner_id": "0defc403-97f3-4784-83c2-363dd7982c61",
+        "owner_id": "1b40c729-f9af-4ac5-933c-5f049f3c9b5d",
         "reviews": [],
         "amenities": [
             "BBQ",
             "Jacuzzi"
         ],
-        "created_at": "2024-10-28T17:51:50.911530",
-        "updated_at": "2024-10-28T17:51:50.911535"
+        "created_at": "2024-10-29T11:41:18.098074",
+        "updated_at": "2024-10-29T11:41:18.098077"
     }
 }
