@@ -1,9 +1,9 @@
 {
-    "0ce6fef9-b3fd-41e2-96e6-f68b580611aa": {
+    "b6fbd49f-bb88-4ae0-a20b-025530b0d631": {
         "type": "amenity",
-        "id": "0ce6fef9-b3fd-41e2-96e6-f68b580611aa",
-        "name": "Piscine",
-        "created_at": "2024-10-29T11:53:09.547702",
-        "updated_at": "2024-10-29T11:53:09.547708"
+        "id": "b6fbd49f-bb88-4ae0-a20b-025530b0d631",
+        "name": "Cabane",
+        "created_at": "2024-10-29T15:04:12.291320",
+        "updated_at": "2024-10-29T15:04:12.291326"
     }
 }

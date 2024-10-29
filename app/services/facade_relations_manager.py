@@ -17,6 +17,11 @@ class FacadeRelationManager:
             raise ValueError(f"User with id {user_id} not found.")
 
         place_data['owner_id'] = user_id
+        place_data['amenities'] = []
+        place_data['reviews'] = []
+        place_data['owner_first_name'] = user.first_name
+        place_data['owner_id'] = user.id
+
         place = self.place_facade.create_place(place_data)
         user.places.append(place['id'])
         self.user_facade.user_repo.update(user_id, user.to_dict())
@@ -131,11 +136,19 @@ class FacadeRelationManager:
 # #  Place - review relations
 # # <------------------------------------------------------------------------>
 
-    def create_review_for_place(self, place_id, review_data):
+    def create_review_for_place(self, place_id, user_id, review_data):
         place = self.place_facade.place_repo.get(place_id)
+        user = self.user_facade.user_repo.get(user_id)
     
         if not place:
-            raise ValueError(f"User with id {place_id} not found.")
+            raise ValueError(f"Place with id {place_id} not found.")
+        
+        if not user:
+            raise ValueError(f"User with id {user_id} not found.")
+        
+        review_data["place_id"] = place_id
+        review_data["place_name"] = place.title
+        review_data["user_first_name"] = user.first_name
 
         review = self.review_facade.create_review(review_data)
         place.reviews.append(review['id'])

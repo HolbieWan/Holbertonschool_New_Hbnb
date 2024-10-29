@@ -6,6 +6,7 @@ from email_validator import EmailNotValidError
 
 from app.api.v1.routes_places import place_model, place_creation_model
 
+
 users_bp = Blueprint('users', __name__)
 api = Namespace('users', description='User operations')
 
@@ -69,6 +70,7 @@ class UserList(Resource):
         """Create a new user"""
         facade = current_app.extensions['HBNB_FACADE']
         user_data = request.get_json()
+
         try:
             new_user = facade.user_facade.create_user(user_data)
 
@@ -95,6 +97,7 @@ class UserList(Resource):
     def get(self):
         """Get all users"""
         facade = current_app.extensions['HBNB_FACADE']
+
         try:
             users = facade.user_facade.get_all_users()
             if not users:
@@ -114,6 +117,7 @@ class UserResource(Resource):
     def get(self, user_id):
         """Get a user by ID"""
         facade = current_app.extensions['HBNB_FACADE']
+
         try:
             user = facade.user_facade.get_user(user_id)
             return user, 200
@@ -129,6 +133,7 @@ class UserResource(Resource):
         """Update a user"""
         facade = current_app.extensions['HBNB_FACADE']
         updated_data = request.get_json()
+
         try:
             updated_user = facade.user_facade.update_user(user_id, updated_data)
             return updated_user, 200
@@ -162,6 +167,9 @@ class UserPlaceDetails(Resource):
         """Create a new place for a user"""
         facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
         new_place_data = request.get_json()
+
+        new_place_data["amenities"] = []
+        new_place_data["reviews"] = []
 
         try:
             place = facade_relation_manager.create_place_for_user(user_id, new_place_data)

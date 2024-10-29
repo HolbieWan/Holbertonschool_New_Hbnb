@@ -1,4 +1,4 @@
-from flask import Blueprint, current_app, jsonify, request, abort
+from flask import Blueprint, current_app, request, abort
 from flask_restx import api, Namespace, Resource, fields
 
 amenities_bp = Blueprint('amenities', __name__)
@@ -12,12 +12,16 @@ amenity_model = api.model('Amenity', {
     'updated_at': fields.String(required=False, description='Time of update, given in response', example=''),
 })
 
+amenity_creation_model = api.model('Amenity_creation', {
+    'name': fields.String(required=True, description='Name of the amenity', example='Sauna'),
+})
+
 #   <------------------------------------------------------------------------>
 
 @api.route('/')
 class AmenityList(Resource):
     @api.doc('create_amenity')
-    @api.expect(amenity_model)
+    @api.expect(amenity_creation_model)
     @api.marshal_with(amenity_model, code=201) #type: ignore
     def post(self):
         """Create a new amenity"""
@@ -26,23 +30,26 @@ class AmenityList(Resource):
         
         try:
             amenity = facade.amenity_facade.create_amenity(new_amenity)
-        except ValueError as e:
-            abort(400, "Amenity already exists")
-        if amenity is None:
-            abort(400, "Amenity already exist")
 
-        return amenity, 201
+            return amenity, 201
+
+        except ValueError as e:
+            abort(400, str(e))
+
     
     @api.doc('get_all_amenities')
     @api.marshal_with(amenity_model, code=201) #type: ignore
     def get(self):
         """Get a list of all amenities"""
         facade = current_app.extensions['HBNB_FACADE']
+
         try:
             amenities = facade.amenity_facade.get_all_amenities()
+
+            return amenities
+
         except ValueError as e:
-            abort(400, "e")
-        return amenities
+            abort(400, str(e))
 
 #   <------------------------------------------------------------------------>
 
@@ -54,24 +61,31 @@ class Amenity(Resource):
     def get(self, amenity_id):
         """Get an amenity by id"""
         facade = current_app.extensions['HBNB_FACADE']
+
         try:
             amenity = facade.amenity_facade.get_amenity(amenity_id)
+
+            return amenity, 200
+
         except ValueError as e:
-            abort(404, "e")
-        return amenity, 200
+            abort(404, str(e))
+
 
     @api.doc('update_amenity')
-    @api.expect(amenity_model)
+    @api.expect(amenity_creation_model)
     @api.marshal_with(amenity_model) # type: ignore
     def put(self, amenity_id):
         """Update an amenity"""
         facade = current_app.extensions['HBNB_FACADE']
         updated_data = request.get_json()
+
         try:
             updated_amenity = facade.amenity_facade.update_amenity(amenity_id, updated_data)
+
+            return updated_amenity, 200
+
         except ValueError as e:
-            abort(404, "e")
-        return updated_amenity, 200
+            abort(404, str(e))
     
     @api.doc('delete_amenity')
     @api.marshal_with(amenity_model) # type: ignore
@@ -79,8 +93,11 @@ class Amenity(Resource):
         """Delete an amenity"""
         facade = current_app.extensions['HBNB_FACADE']
         amenity_to_delete = facade.amenity_facade.get_amenity(amenity_id)
+
         try:
             facade.amenity_facade.delete_amenity(amenity_id)
+
+            return (f"Amenity: {amenity_to_delete} has been deleted."), 200
+
         except ValueError as e:
-            abort(400, "e")
-        return (f"Amenity: {amenity_to_delete} has been deleted."), 200
+            abort(400, str(e))
