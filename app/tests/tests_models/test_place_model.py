@@ -8,8 +8,7 @@ class TestPlaceModel(unittest.TestCase):
         # Clear the mutable default arguments to prevent shared state between tests
         if Place.__init__.__defaults__:
             default_amenities, default_reviews = Place.__init__.__defaults__
-            default_amenities.clear()
-            default_reviews.clear()
+
 
     def test_place_creation_valid(self):
         """Test creating a place with valid data."""
