@@ -98,7 +98,7 @@ class ReviewResource(Resource):
             abort(400, str(e))
 
 
-    @api.doc('create_review')
+    @api.doc('delete_review')
     def delete(self, review_id):
         """Delete a review"""
         facade = current_app.extensions['HBNB_FACADE']

@@ -1,16 +1,16 @@
 {
-    "ebe8b5dd-ba64-4cf6-be28-e4fcf637dd97": {
+    "7328fc25-b9c8-4555-884b-0bdf2a3fa6a5": {
         "type": "user",
-        "id": "ebe8b5dd-ba64-4cf6-be28-e4fcf637dd97",
+        "id": "7328fc25-b9c8-4555-884b-0bdf2a3fa6a5",
         "first_name": "Johnny",
         "last_name": "Rocker",
-        "email": "johnny.rocker@gmail.com",
+        "email": "johnny.rocker2@gmail.com",
         "password": "mypassword",
         "is_admin": false,
         "places": [
-            "8b6286b0-9931-48fa-91a3-4d55d32c5eee"
+            "0c6049b4-8b30-4748-9037-ac9fd9ba708a"
         ],
-        "created_at": "2024-10-30T16:07:50.420027",
-        "updated_at": "2024-10-30T16:49:05.759966"
+        "created_at": "2024-10-30T17:16:38.189852",
+        "updated_at": "2024-10-30T17:18:44.078544"
     }
 }

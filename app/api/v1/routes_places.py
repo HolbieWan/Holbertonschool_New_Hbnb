@@ -37,7 +37,7 @@ place_creation_model = api.model('Place_creation', {
 
 add_amenity_model = api.model('Add_amenity_model', {
     'name': fields.String(required=True, description='Name of the amenity', example='Sauna'),
-    'place_id': fields.String(required=True, description='Id of the place to append', example='')
+    # 'place_id': fields.String(required=True, description='Id of the place to append', example='')
 })
 
 get_amenities_model = api.model('Get_amenities_model', {
@@ -46,7 +46,7 @@ get_amenities_model = api.model('Get_amenities_model', {
 })
 
 add_review_model = api.model('Add_review_model', {
-    'user_id': fields.String(required=True, description='User_id of the poster', example='007c0cdd-c2d1-4232-b262-6314522aca45'),
+    # 'user_id': fields.String(required=True, description='User_id of the poster', example='007c0cdd-c2d1-4232-b262-6314522aca45'),
     'text': fields.String(required=True, description='Text content for the new review', example='Great place for a relaxing time'),
     'rating': fields.Integer(required=True, description='Rating of the place, from 1 to 5', example='4'),
 })

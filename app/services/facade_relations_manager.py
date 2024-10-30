@@ -204,6 +204,7 @@ class FacadeRelationManager:
         review_data["place_id"] = place_id
         review_data["place_name"] = place.title
         review_data["user_first_name"] = user.first_name
+        review_data["user_id"] = user_id
 
         review = self.review_facade.create_review(review_data)
         place.reviews.append(review['id'])
