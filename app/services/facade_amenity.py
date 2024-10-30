@@ -63,7 +63,6 @@ class AmenityFacade():
     def delete_amenity(self, amenity_id):
         amenity = self.amenity_repo.get(amenity_id)
         if amenity:
-            print(f"Deleted amenity: {amenity}")
             self.amenity_repo.delete(amenity_id)
         else:
             raise ValueError(f"Amenity with id: {amenity_id} not found.")

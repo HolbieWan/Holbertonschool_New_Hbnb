@@ -53,6 +53,7 @@ add_review_model = api.model('Add_review_model', {
 
 get_all_reviews_success_model = api.model('GetAllReviews', {
     'reviews': fields.List(fields.Nested(api.model('Review', {
+        'id': fields.String(required=True, description='Unique identifier of the review', example='007c0cdd-c2d1-4232-b262-6314522aca45'),
         'place_name': fields.String(required=False, description='Name of the reviewed place', example='007c0cdd-c2d1-4232-b262-6314522aca45'),
         'user_id': fields.String(required=False, description='User_id of the reviewer', example='007c0cdd-c2d1-4232-b262-6314522aca45'),
         'user_first_name': fields.String(required=False, description='First_name of the reviewer', example='Johnny'),

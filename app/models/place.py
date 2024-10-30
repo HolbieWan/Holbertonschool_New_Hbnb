@@ -2,7 +2,7 @@ from app.models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    def __init__(self, title, description, price, latitude, longitude, owner_id, owner_first_name, amenities=[], reviews=[]):
+    def __init__(self, title, description, price, latitude, longitude, owner_id, owner_first_name, amenities=None, reviews=None):
         super().__init__()
         self.title = title
         self.description = description
@@ -11,8 +11,8 @@ class Place(BaseModel):
         self.longitude = longitude
         self.owner_first_name = owner_first_name
         self.owner_id = owner_id
-        self.reviews = reviews
-        self.amenities = amenities
+        self.reviews = reviews if reviews is not None else []
+        self.amenities = amenities if amenities is not None else []
 
     def add_review(self, review):
         """Add a review to the place."""

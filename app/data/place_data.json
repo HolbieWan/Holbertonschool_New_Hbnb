@@ -1,1 +1,17 @@
-{}
+{
+    "8b6286b0-9931-48fa-91a3-4d55d32c5eee": {
+        "type": "place",
+        "id": "8b6286b0-9931-48fa-91a3-4d55d32c5eee",
+        "title": "Chez Johnny",
+        "description": "The rocker place",
+        "price": 150.5,
+        "latitude": 23.2356,
+        "longitude": 54.4577,
+        "owner_first_name": "Johnny",
+        "owner_id": "ebe8b5dd-ba64-4cf6-be28-e4fcf637dd97",
+        "reviews": [],
+        "amenities": [],
+        "created_at": "2024-10-30T16:49:05.759598",
+        "updated_at": "2024-10-30T16:49:05.759602"
+    }
+}

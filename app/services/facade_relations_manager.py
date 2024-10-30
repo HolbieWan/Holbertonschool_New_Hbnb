@@ -41,8 +41,8 @@ class FacadeRelationManager:
         places_dict_list = []
 
         for place_id in places_id_list:
-            place = self.user_facade.user_repo.get(place_id)
-            places_dict_list.append(place)
+            place = self.place_facade.place_repo.get(place_id)
+            places_dict_list.append(place.to_dict())
 
         if not places_dict_list:
             raise ValueError(f"No place found for this user: {user_id}")

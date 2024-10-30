@@ -11,7 +11,9 @@ class Amenity(BaseModel):
             if not isinstance(self.name, str):
                 raise TypeError("name must be strings (str).")
             
-            if len(self.name) > 50 or len(self.name) == 0:
+            stripped_name = self.name.strip()
+        
+            if len(stripped_name) == 0 or len(stripped_name) > 50:
                 raise ValueError("Name must not be empty and less than 50 characters.")
             
             return True

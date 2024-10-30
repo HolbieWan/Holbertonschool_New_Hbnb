@@ -18,7 +18,7 @@ user_model = api.model('User', {
     'email': fields.String(required=True, description='Email address', example='johnny.rocker@gmail.com'),
     'password' : fields.String(required=True, description="Password", example='mypassword'),
     'is_admin': fields.Boolean(required=True, description='Admin rights', example='false'),
-    'places': fields.List(fields.String, required=False, description='List of places for this user', example=[""]),
+    'places': fields.List(fields.String, required=False, description='List of places for this user', example=[]),
     'created_at': fields.String(required=False, description='Time of creation, given in response', example=''),
     'updated_at': fields.String(required=False, description='Time of update, given in response', example=''),
 })
@@ -39,6 +39,7 @@ user_update_model = api.model('User_update', {
 
 get_all_places_success_model = api.model('GetAllPlaces', {
     'places': fields.List(fields.Nested(api.model('Place', {
+    'id': fields.String(required=True, description='Unique identifier of the place', example='0defc403-97f3-4784-83c2-363dd7982c61'),
     'title': fields.String(required=True, description='Name of the place', example='Chez Johnny'),
     'amenities': fields.List(fields.String, required=False, description='List of amenities', example=["BBQ", "Jacuzzi"]),
     'reviews': fields.List(fields.String, required=False, description='List of reviews', example=[""]),
@@ -54,10 +55,10 @@ get_all_places_success_model = api.model('GetAllPlaces', {
 })
 
 
-@api.route('/home')
-class Home(Resource):
-    def get(self):
-        return "Welcome to the homepage"
+# @api.route('/home')
+# class Home(Resource):
+#     def get(self):
+#         return "Welcome to the homepage"
     
  #   <------------------------------------------------------------------------>
 

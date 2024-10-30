@@ -88,16 +88,14 @@ class Amenity(Resource):
             abort(404, str(e))
     
     @api.doc('delete_amenity')
-    @api.marshal_with(amenity_model) # type: ignore
     def delete(self, amenity_id):
         """Delete an amenity"""
         facade = current_app.extensions['HBNB_FACADE']
-        amenity_to_delete = facade.amenity_facade.get_amenity(amenity_id)
 
         try:
             facade.amenity_facade.delete_amenity(amenity_id)
 
-            return (f"Amenity: {amenity_to_delete} has been deleted."), 200
+            return (f"Amenity: {amenity_id} has been deleted."), 200
 
         except ValueError as e:
-            abort(400, str(e))
+            abort(404, str(e))
