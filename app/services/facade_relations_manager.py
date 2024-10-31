@@ -195,6 +195,7 @@ class FacadeRelationManager:
 
         self.amenity_facade.amenity_repo.delete(amenity_name)
 
+        # <------------------------------------------>
 
     def get_all_places_with_specifique_amenity(self, amenity_name):
         places = self.place_facade.get_all_places()
@@ -292,4 +293,29 @@ class FacadeRelationManager:
 
         self.review_facade.review_repo.delete(review_id)
 
-#         # <------------------------------------------>
+
+# #  User - review relations
+# # <------------------------------------------------------------------------>
+
+    def get_all_reviews_from_user(self, user_id):
+        user = self.user_facade.user_repo.get(user_id)
+        reviews = self.review_facade.review_repo.get_all()
+
+        if not user:
+            raise ValueError("This user does not exist")
+
+        if not reviews:
+            raise ValueError("No user found in review repo")
+        
+        user_reviews_list = []
+
+        for review in reviews:
+            if user_id in review.user_id:
+                review.type = "review"
+                user_reviews_list.append(review)
+            
+            else: 
+                raise ValueError(f"No review found for this user: {user_id}")
+                
+        return user_reviews_list
+

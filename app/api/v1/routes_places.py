@@ -286,7 +286,6 @@ class PlaceAmenityName(Resource):
     @api.marshal_list_with(place_model)
     def get(self, amenity_name):
         """Get all places with this amenity """
-        facade = current_app.extensions['HBNB_FACADE']
         facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
 
         try:

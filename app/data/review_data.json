@@ -10,5 +10,17 @@
         "user_first_name": "Johnny",
         "created_at": "2024-10-30T17:25:08.913985",
         "updated_at": "2024-10-30T18:02:24.261901"
+    },
+    "af1087b6-c1c5-43ee-847d-b14df6c07273": {
+        "type": "review",
+        "id": "af1087b6-c1c5-43ee-847d-b14df6c07273",
+        "text": "Great place for a relaxing time",
+        "rating": 4,
+        "place_id": "0c6049b4-8b30-4748-9037-ac9fd9ba708a",
+        "place_name": "Chez Johnny",
+        "user_id": "7328fc25-b9c8-4555-884b-0bdf2a3fa6a5",
+        "user_first_name": "Johnny",
+        "created_at": "2024-10-31T13:16:54.857961",
+        "updated_at": "2024-10-31T13:16:54.857979"
     }
 }

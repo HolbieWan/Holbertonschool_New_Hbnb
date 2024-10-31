@@ -10,7 +10,8 @@
         "owner_first_name": "Johnny",
         "owner_id": "7328fc25-b9c8-4555-884b-0bdf2a3fa6a5",
         "reviews": [
-            "ee1d117c-7d28-4063-a18f-1f1e88aeed81"
+            "ee1d117c-7d28-4063-a18f-1f1e88aeed81",
+            "af1087b6-c1c5-43ee-847d-b14df6c07273"
         ],
         "amenities": [
             "Piscine",
@@ -21,7 +22,7 @@
             "Trampoline"
         ],
         "created_at": "2024-10-30T17:18:44.077649",
-        "updated_at": "2024-10-31T11:19:15.517898"
+        "updated_at": "2024-10-31T13:16:54.858896"
     },
     "0c81b528-9c27-4217-9534-fb13aa2b59fd": {
         "type": "place",

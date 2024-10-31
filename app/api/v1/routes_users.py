@@ -5,6 +5,7 @@ from flask_restx import Api, Namespace, Resource, fields
 from email_validator import EmailNotValidError
 
 from app.api.v1.routes_places import place_model, place_creation_model
+from app.api.v1.routes_reviews import review_model
 
 
 users_bp = Blueprint('users', __name__)
@@ -208,3 +209,21 @@ class UserPlaceDetails(Resource):
             abort(400, str(e))
         
         return places_response, 200
+    
+ #   <------------------------------------------------------------------------>
+
+@api.route('/<string:user_id>/reviews')
+@api.param('user_id', 'The User identifier')
+class UserReviewDetails(Resource):
+    @api.doc('Get_all_reviews_from_a_user')
+    @api.marshal_with(review_model, code=201) # type: ignore
+    def get(self, user_id):
+        """Get all reviews from a user """
+        facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
+
+        try:
+            reviews = facade_relation_manager.get_all_reviews_from_user(user_id)
+            return reviews, 201
+
+        except ValueError as e:
+            abort(400, str(e))
