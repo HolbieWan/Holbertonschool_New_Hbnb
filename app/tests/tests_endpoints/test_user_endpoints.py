@@ -231,5 +231,46 @@ class TestUserEndpoints(BaseTestCase):
         self.assertIn('places', data)
         self.assertEqual(len(data['places']), 0)
 
+
+    def test_get_all_reviews_from_user_success(self):
+        """Test retrieving all reviews from a user successfully."""
+        user_id = "user-123"
+        # Mock the get_all_reviews_from_user method to return a list of reviews
+        self.app.extensions['FACADE_RELATION_MANAGER'].get_all_reviews_from_user.return_value = [
+            {"id": "review-789", "text": "Great place!", "rating": 5, "place_id": "place-456", "user_id": user_id}
+        ]
+
+        response = self.client.get(f'/users/{user_id}/reviews')
+        self.assertEqual(response.status_code, 201)
+        data = response.get_json()
+        self.assertIsInstance(data, list)
+        self.assertEqual(len(data), 1)
+        self.assertEqual(data[0]['id'], 'review-789')
+        self.assertEqual(data[0]['text'], 'Great place!')
+        self.assertEqual(data[0]['rating'], 5)
+        self.assertEqual(data[0]['user_id'], user_id)
+
+    def test_get_all_reviews_from_user_user_not_found(self):
+        """Test retrieving reviews for a user that does not exist."""
+        user_id = "nonexistent"
+        # Mock the get_all_reviews_from_user method to raise ValueError
+        self.app.extensions['FACADE_RELATION_MANAGER'].get_all_reviews_from_user.side_effect = ValueError("This user does not exist")
+
+        response = self.client.get(f'/users/{user_id}/reviews')
+        self.assertEqual(response.status_code, 400)
+        data = response.get_json()
+        self.assertIn("This user does not exist", data['message'])
+
+    def test_get_all_reviews_from_user_no_reviews(self):
+        """Test retrieving reviews for a user with no reviews."""
+        user_id = "user-123"
+        # Mock the get_all_reviews_from_user method to raise ValueError for no reviews
+        self.app.extensions['FACADE_RELATION_MANAGER'].get_all_reviews_from_user.side_effect = ValueError(f"No review found for this user: {user_id}")
+
+        response = self.client.get(f'/users/{user_id}/reviews')
+        self.assertEqual(response.status_code, 400)
+        data = response.get_json()
+        self.assertIn(f"No review found for this user: {user_id}", data['message'])
+
 if __name__ == '__main__':
     unittest.main()

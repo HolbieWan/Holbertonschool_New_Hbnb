@@ -180,42 +180,42 @@ class TestFacadeRelationManager(unittest.TestCase):
 
         self.assertIn(f"No place found for this user: {user_id}", str(context.exception))
 
-def test_add_amenity_to_a_place_success(self):
-    """Test adding an amenity to a place successfully."""
-    place_id = "place-456"
-    amenity_data = {"name": "WiFi"}
-    amenity_name = amenity_data["name"]
+    def test_add_amenity_to_a_place_success(self):
+        """Test adding an amenity to a place successfully."""
+        place_id = "place-456"
+        amenity_data = {"name": "WiFi"}
+        amenity_name = amenity_data["name"]
 
-    # Mock place_facade.place_repo.get to return sample_place
-    self.mock_place_facade.place_repo.get.return_value = self.sample_place
+        # Mock place_facade.place_repo.get to return sample_place
+        self.mock_place_facade.place_repo.get.return_value = self.sample_place
 
-    # Ensure that the place's amenities do not include the amenity yet
-    self.sample_place.amenities = []
+        # Ensure that the place's amenities do not include the amenity yet
+        self.sample_place.amenities = []
 
-    # Mock amenity_facade.amenity_repo.get_by_attribute to return None (amenity not found)
-    self.mock_amenity_facade.amenity_repo.get_by_attribute.return_value = None
+        # Mock amenity_facade.amenity_repo.get_by_attribute to return None (amenity not found)
+        self.mock_amenity_facade.amenity_repo.get_by_attribute.return_value = None
 
-    # Mock amenity_facade.create_amenity to return the created amenity data
-    created_amenity_data = {"id": "amenity-001", "name": amenity_name}
-    self.mock_amenity_facade.create_amenity.return_value = created_amenity_data
+        # Mock amenity_facade.create_amenity to return the created amenity data
+        created_amenity_data = {"id": "amenity-001", "name": amenity_name}
+        self.mock_amenity_facade.create_amenity.return_value = created_amenity_data
 
-    # Mock place's to_dict method
-    self.sample_place.to_dict.return_value = {
-        "id": place_id,
-        "title": "Cozy Cottage",
-        "amenities": [amenity_name]  # Amenity added to the place
-    }
+        # Mock place's to_dict method
+        self.sample_place.to_dict.return_value = {
+            "id": place_id,
+            "title": "Cozy Cottage",
+            "amenities": [amenity_name]  # Amenity added to the place
+        }
 
-    # Call the method
-    result = self.relation_manager.add_amenity_to_a_place(place_id, amenity_data)
+        # Call the method
+        result = self.relation_manager.add_amenity_to_a_place(place_id, amenity_data)
 
-    # Assertions
-    self.mock_place_facade.place_repo.get.assert_called_once_with(place_id)
-    self.assertIn(amenity_name, self.sample_place.amenities)
-    self.mock_place_facade.place_repo.update.assert_called_once_with(place_id, self.sample_place.to_dict())
-    self.mock_amenity_facade.amenity_repo.get_by_attribute.assert_called_once_with("name", amenity_name)
-    self.mock_amenity_facade.create_amenity.assert_called_once_with(amenity_data)
-    self.assertEqual(result, created_amenity_data)
+        # Assertions
+        self.mock_place_facade.place_repo.get.assert_called_once_with(place_id)
+        self.assertIn(amenity_name, self.sample_place.amenities)
+        self.mock_place_facade.place_repo.update.assert_called_once_with(place_id, self.sample_place.to_dict())
+        self.mock_amenity_facade.amenity_repo.get_by_attribute.assert_called_once_with("name", amenity_name)
+        self.mock_amenity_facade.create_amenity.assert_called_once_with(amenity_data)
+        self.assertEqual(result, created_amenity_data)
 
     def test_add_amenity_to_a_place_place_not_found(self):
         """Test adding an amenity when the place is not found."""
@@ -231,7 +231,106 @@ def test_add_amenity_to_a_place_success(self):
         self.mock_place_facade.place_repo.get.assert_called_once_with(place_id)
         self.assertIn(f"Place: {place_id} not found.", str(context.exception))
 
-    # Continue adding tests for other methods...
+    def test_get_all_places_with_specifique_amenity_success(self):
+        """Test getting all places with a specific amenity successfully."""
+        amenity_name = "WiFi"
+        # Mock the place_facade.get_all_places to return a list of places
+        self.mock_place_facade.get_all_places.return_value = [
+            {"id": "place-456", "title": "Cozy Cottage", "amenities": ["WiFi", "Pool"]},
+            {"id": "place-789", "title": "Modern Apartment", "amenities": ["Gym", "WiFi"]}
+        ]
+
+        # Call the method
+        result = self.relation_manager.get_all_places_with_specifique_amenity(amenity_name)
+
+        # Assertions
+        self.mock_place_facade.get_all_places.assert_called_once()
+        self.assertEqual(len(result), 2)
+        self.assertEqual(result[0]["id"], "place-456")
+        self.assertEqual(result[1]["id"], "place-789")
+
+    def test_get_all_places_with_specifique_amenity_no_places_found(self):
+        """Test getting all places with a specific amenity when none are found."""
+        amenity_name = "WiFi"
+        # Mock the place_facade.get_all_places to return an empty list
+        self.mock_place_facade.get_all_places.return_value = []
+
+        with self.assertRaises(ValueError) as context:
+            self.relation_manager.get_all_places_with_specifique_amenity(amenity_name)
+
+        self.mock_place_facade.get_all_places.assert_called_once()
+        self.assertIn("No place found in place_repo", str(context.exception))
+
+    def test_get_all_places_with_specifique_amenity_no_matching_amenity(self):
+        """Test getting all places with a specific amenity when no matching amenity is found."""
+        amenity_name = "Sauna"
+        # Mock the place_facade.get_all_places to return a list of places without the specified amenity
+        self.mock_place_facade.get_all_places.return_value = [
+            {"id": "place-456", "title": "Cozy Cottage", "amenities": ["WiFi", "Pool"]},
+            {"id": "place-789", "title": "Modern Apartment", "amenities": ["Gym"]}
+        ]
+
+        with self.assertRaises(ValueError) as context:
+            self.relation_manager.get_all_places_with_specifique_amenity(amenity_name)
+
+        self.mock_place_facade.get_all_places.assert_called_once()
+        self.assertIn(f"No place found with the amenity: {amenity_name}", str(context.exception))
+
+    def test_get_all_reviews_from_user_success(self):
+        """Test getting all reviews for a user successfully."""
+        user_id = "user-123"
+        self.mock_user_facade.user_repo.get.return_value = self.sample_user
+        self.mock_review_facade.review_repo.get_all.return_value = [self.sample_review]
+
+        # Call the method
+        result = self.relation_manager.get_all_reviews_from_user(user_id)
+
+        # Assertions
+        self.mock_user_facade.user_repo.get.assert_called_once_with(user_id)
+        self.mock_review_facade.review_repo.get_all.assert_called_once()
+        self.assertEqual(len(result), 1)
+        self.assertEqual(result[0].id, "review-789")
+        self.assertEqual(result[0].type, "review")
+
+    def test_get_all_reviews_from_user_user_not_found(self):
+        """Test getting all reviews when the user is not found."""
+        user_id = "user-999"
+        self.mock_user_facade.user_repo.get.return_value = None
+
+        with self.assertRaises(ValueError) as context:
+            self.relation_manager.get_all_reviews_from_user(user_id)
+
+        self.mock_user_facade.user_repo.get.assert_called_once_with(user_id)
+        self.assertIn("This user does not exist", str(context.exception))
+
+    def test_get_all_reviews_from_user_no_reviews_found(self):
+        """Test getting all reviews when there are no reviews in the review repo."""
+        user_id = "user-123"
+        self.mock_user_facade.user_repo.get.return_value = self.sample_user
+        self.mock_review_facade.review_repo.get_all.return_value = []
+
+        with self.assertRaises(ValueError) as context:
+            self.relation_manager.get_all_reviews_from_user(user_id)
+
+        self.mock_user_facade.user_repo.get.assert_called_once_with(user_id)
+        self.mock_review_facade.review_repo.get_all.assert_called_once()
+        self.assertIn("No user found in review repo", str(context.exception))
+
+    def test_get_all_reviews_from_user_no_reviews_for_user(self):
+        """Test getting all reviews when there are no reviews for the user."""
+        user_id = "user-123"
+        self.mock_user_facade.user_repo.get.return_value = self.sample_user
+        self.mock_review_facade.review_repo.get_all.return_value = [self.sample_review]
+
+        # Modify the review to belong to a different user
+        self.sample_review.user_id = "user-456"
+
+        with self.assertRaises(ValueError) as context:
+            self.relation_manager.get_all_reviews_from_user(user_id)
+
+        self.mock_user_facade.user_repo.get.assert_called_once_with(user_id)
+        self.mock_review_facade.review_repo.get_all.assert_called_once()
+        self.assertIn(f"No review found for this user: {user_id}", str(context.exception))
 
 if __name__ == '__main__':
     unittest.main()

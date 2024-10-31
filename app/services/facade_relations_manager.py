@@ -209,8 +209,8 @@ class FacadeRelationManager:
             if amenity_name in place["amenities"]:
                 place_amenity_name_list.append(place)
 
-            else:
-                raise ValueError(f"No place found with the amenity: {amenity_name}")
+        if not place_amenity_name_list:
+            raise ValueError(f"No place found with the amenity: {amenity_name}")
             
         return place_amenity_name_list
             
@@ -314,8 +314,8 @@ class FacadeRelationManager:
                 review.type = "review"
                 user_reviews_list.append(review)
             
-            else: 
-                raise ValueError(f"No review found for this user: {user_id}")
+        if not user_reviews_list: 
+            raise ValueError(f"No review found for this user: {user_id}")
                 
         return user_reviews_list
 
