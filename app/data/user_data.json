@@ -1,17 +1,1 @@
-{
-    "7328fc25-b9c8-4555-884b-0bdf2a3fa6a5": {
-        "type": "user",
-        "id": "7328fc25-b9c8-4555-884b-0bdf2a3fa6a5",
-        "first_name": "Johnny",
-        "last_name": "Rocker",
-        "email": "johnny.rocker2@gmail.com",
-        "password": "mypassword",
-        "is_admin": false,
-        "places": [
-            "0c6049b4-8b30-4748-9037-ac9fd9ba708a",
-            "0c81b528-9c27-4217-9534-fb13aa2b59fd"
-        ],
-        "created_at": "2024-10-30T17:16:38.189852",
-        "updated_at": "2024-10-31T12:35:15.645657"
-    }
-}
+{}
