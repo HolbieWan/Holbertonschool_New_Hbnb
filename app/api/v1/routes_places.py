@@ -32,22 +32,12 @@ place_creation_model = api.model('Place_creation', {
     'longitude': fields.Float(required=True, description='Longitude coordinates of the place', example='54.4577'),
 })
 
-# extended_place_model = api.inherit('ExtendedPlace', place_model, {
-#     'owner_name': fields.String(required=False, description='Name of the owner of those places')
-# })
-
-# add_amenity_model = api.model('Add_amenity_model', {
-#     'name': fields.String(required=True, description='Name of the amenity', example='Sauna'),
-#     # 'place_id': fields.String(required=True, description='Id of the place to append', example='')
-# })
-
 get_amenities_model = api.model('Get_amenities_model', {
     'place_id': fields.String(required=False, description='Id of the place to retrieve from', example=''),
     'place_amenities': fields.List(fields.String, required=False, description='List of amenities for a place', example=['Sauna'])
 })
 
 add_review_model = api.model('Add_review_model', {
-    # 'user_id': fields.String(required=True, description='User_id of the poster', example='007c0cdd-c2d1-4232-b262-6314522aca45'),
     'text': fields.String(required=True, description='Text content for the new review', example='Great place for a relaxing time'),
     'rating': fields.Integer(required=True, description='Rating of the place, from 1 to 5', example='4'),
 })
@@ -286,3 +276,25 @@ class AmenityReviewDelete(Resource):
         
         except ValueError as e:
             abort(400, str(e))
+
+ #   <------------------------------------------------------------------------>
+
+@api.route('/amenity/<string:amenity_name>')
+@api.param('amenity_name', 'The name of the amenity')
+class PlaceAmenityName(Resource):
+    @api.doc('get_all_places_with_specifique_amenity')
+    @api.marshal_list_with(place_model)
+    def get(self, amenity_name):
+        """Get all places with this amenity """
+        facade = current_app.extensions['HBNB_FACADE']
+        facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
+
+        try:
+            amenities = facade_relation_manager.get_all_places_with_specifique_amenity(amenity_name)
+            
+            return amenities, 200
+
+        except ValueError as e:
+            abort(400, str(e))
+
+ #   <------------------------------------------------------------------------>

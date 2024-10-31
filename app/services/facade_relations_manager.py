@@ -195,6 +195,26 @@ class FacadeRelationManager:
 
         self.amenity_facade.amenity_repo.delete(amenity_name)
 
+
+    def get_all_places_with_specifique_amenity(self, amenity_name):
+        places = self.place_facade.get_all_places()
+
+        if not places:
+            raise ValueError("No place found in place_repo")
+        
+        place_amenity_name_list = []
+
+        for place in places:
+            if amenity_name in place["amenities"]:
+                place_amenity_name_list.append(place)
+
+            else:
+                raise ValueError(f"No place found with the amenity: {amenity_name}")
+            
+        return place_amenity_name_list
+            
+        
+
 # #  Place - review relations
 # # <------------------------------------------------------------------------>
 
