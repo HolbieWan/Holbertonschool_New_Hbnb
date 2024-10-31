@@ -115,20 +115,19 @@ class TestPlaceEndpoints(BaseTestCase):
     def test_add_amenity_to_place(self):
         """Test adding an amenity to a place."""
         amenity_data = {
-            "name": "Sauna",
-            "place_id": "place-456"
-        }
-
-        # Mock the add_amenity_to_a_place method
-        self.app.extensions['FACADE_RELATION_MANAGER'].add_amenity_to_a_place.return_value = {
             "name": "Sauna"
         }
+
+        # Use a mutable dictionary for the mock return value
+        return_value = {"name": "Sauna"}
+        self.app.extensions['FACADE_RELATION_MANAGER'].add_amenity_to_a_place.return_value = return_value
 
         response = self.client.post('/places/place-456/amenities', json=amenity_data)
         self.assertEqual(response.status_code, 201)
         data = response.get_json()
+
+        # Assertions
         self.assertEqual(data['name'], 'Sauna')
-        self.assertEqual(data['place_id'], 'place-456')
 
     def test_get_all_amenities_for_place(self):
         """Test retrieving all amenities for a place."""

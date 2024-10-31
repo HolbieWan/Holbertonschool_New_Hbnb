@@ -128,6 +128,8 @@ class FacadeRelationManager:
 
     def add_amenity_to_a_place(self, place_id, amenity_data):
         place = self.place_facade.place_repo.get(place_id)
+        amenity_name = amenity_data["name"]
+        amenity = self.amenity_facade.amenity_repo.get_by_attribute("name",amenity_name)
 
         if not place:
             raise ValueError(f"Place: {place_id} not found.")
@@ -135,8 +137,13 @@ class FacadeRelationManager:
         if not amenity_data["name"] in place.amenities:
             place.amenities.append(amenity_data['name'])
             self.place_facade.place_repo.update(place_id, place.to_dict())
+            print(f"Amenity: {amenity_data['name']} has been added to the place: {place_id}")
 
-        amenity = self.amenity_facade.create_amenity(amenity_data)
+            if not amenity:
+                amenity = self.amenity_facade.create_amenity(amenity_data)
+
+        else:
+            raise ValueError(f"Amenity: {amenity_data['name']} already exist for this place: {place_id}")
 
         return amenity
 

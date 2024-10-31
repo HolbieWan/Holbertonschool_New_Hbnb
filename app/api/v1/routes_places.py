@@ -2,6 +2,7 @@ from flask import Blueprint, current_app, jsonify, request, abort
 from flask_restx import api, Namespace, Resource, fields
 
 from app.api.v1.routes_reviews import review_model
+from app.api.v1.routes_amenities import amenity_model, amenity_creation_model
 
 
 places_bp = Blueprint('places', __name__)
@@ -35,10 +36,10 @@ place_creation_model = api.model('Place_creation', {
 #     'owner_name': fields.String(required=False, description='Name of the owner of those places')
 # })
 
-add_amenity_model = api.model('Add_amenity_model', {
-    'name': fields.String(required=True, description='Name of the amenity', example='Sauna'),
-    # 'place_id': fields.String(required=True, description='Id of the place to append', example='')
-})
+# add_amenity_model = api.model('Add_amenity_model', {
+#     'name': fields.String(required=True, description='Name of the amenity', example='Sauna'),
+#     # 'place_id': fields.String(required=True, description='Id of the place to append', example='')
+# })
 
 get_amenities_model = api.model('Get_amenities_model', {
     'place_id': fields.String(required=False, description='Id of the place to retrieve from', example=''),
@@ -116,18 +117,6 @@ class PlaceResource(Resource):
         except ValueError as e:
             abort(400, str(e))
 
-    # @api.doc('delete_place')
-    # def delete(self, place_id):
-    #     """Delete a place and associated instances"""
-    #     facade = current_app.extensions['HBNB_FACADE']
-        
-    #     try:
-    #         facade.place_facade.delete_place(place_id)
-
-    #         return {"message": f"Place: {place_id} has been deleted"}, 200
-        
-    #     except ValueError as e:
-    #         abort(400, str(e))
     
     @api.doc('delete_place')
     def delete(self, place_id):
@@ -171,8 +160,8 @@ class PlaceUserOwnerDetails(Resource):
 @api.param('place_id', 'The place identifier')
 class AmenityPlaceList(Resource):
     @api.doc('add_amenity_to_a_place')
-    @api.expect(add_amenity_model)
-    @api.marshal_with(add_amenity_model) # type: ignore
+    @api.expect(amenity_creation_model)
+    @api.marshal_with(amenity_model) # type: ignore
     def post(self, place_id):
         """Add an amenity to a place"""
         facade_relation_manager = current_app.extensions['FACADE_RELATION_MANAGER']
@@ -180,7 +169,6 @@ class AmenityPlaceList(Resource):
         try:
             amenity_data = request.get_json()
             amenities = facade_relation_manager.add_amenity_to_a_place(place_id, amenity_data)
-            amenities["place_id"] = place_id
 
             return amenities, 201
 

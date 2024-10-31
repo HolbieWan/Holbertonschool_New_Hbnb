@@ -5,5 +5,40 @@
         "name": "Piscine",
         "created_at": "2024-10-30T17:22:48.030019",
         "updated_at": "2024-10-30T17:22:48.030021"
+    },
+    "ec1833c1-4b64-4bfa-8290-ef585c1d0766": {
+        "type": "amenity",
+        "id": "ec1833c1-4b64-4bfa-8290-ef585c1d0766",
+        "name": "Jardin",
+        "created_at": "2024-10-31T10:18:43.513643",
+        "updated_at": "2024-10-31T10:18:43.513646"
+    },
+    "f30f2cd6-71cf-4805-851f-94dfdbcc1737": {
+        "type": "amenity",
+        "id": "f30f2cd6-71cf-4805-851f-94dfdbcc1737",
+        "name": "BBQ",
+        "created_at": "2024-10-31T10:33:28.705950",
+        "updated_at": "2024-10-31T10:33:28.705952"
+    },
+    "4b5e887e-7057-42ef-ad19-ff2b41c4a120": {
+        "type": "amenity",
+        "id": "4b5e887e-7057-42ef-ad19-ff2b41c4a120",
+        "name": "Sauna",
+        "created_at": "2024-10-31T10:48:15.779520",
+        "updated_at": "2024-10-31T10:48:15.779522"
+    },
+    "708b180b-5663-4060-9717-ad741d6d7d2d": {
+        "type": "amenity",
+        "id": "708b180b-5663-4060-9717-ad741d6d7d2d",
+        "name": "Jacuzzi",
+        "created_at": "2024-10-31T11:03:04.372307",
+        "updated_at": "2024-10-31T11:03:04.372308"
+    },
+    "6619cc6b-a414-4b2d-89ad-5e2a7c048cd8": {
+        "type": "amenity",
+        "id": "6619cc6b-a414-4b2d-89ad-5e2a7c048cd8",
+        "name": "Trampoline",
+        "created_at": "2024-10-31T11:19:15.518293",
+        "updated_at": "2024-10-31T11:19:15.518296"
     }
 }

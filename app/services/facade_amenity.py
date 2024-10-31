@@ -17,12 +17,13 @@ class AmenityFacade():
 
         existing_amenity = self.amenity_repo.get_by_attribute("name", amenity.name)
         if existing_amenity:
-            print(f"Amenity: {amenity.name} already exists. Please choose another name for your amenity")
+            print(f"Amenity: {amenity.name} already exists in amenity repo. Please choose another name for your amenity")
             raise ValueError(f"Amenity '{amenity.name}' already exists. Please choose another name.")
 
         if amenity.is_valid():
             print(f"Amenity {amenity.name} passed validation.")
             self.amenity_repo.add(amenity)
+            print(f"Amenity: {amenity.name} has been added to amenity_repo")
             return amenity.to_dict()
         else:
             print(f"Amenity: {amenity.name} failed validation.")
