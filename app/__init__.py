@@ -1,8 +1,8 @@
 # app/__init__.py
 import os
 
-from flask import Flask
-from flask_restx import Api
+from flask import Flask # type: ignore
+from flask_restx import Api # type: ignore
 from config import config
 
 from app.api.v1.routes_users import users_bp

@@ -66,7 +66,7 @@ class InMemoryRepository(Repository):
 class InFileRepository(InMemoryRepository):
 
     def __init__(self, file_name):
-        self.path = f"/root/Holbertonschool_New_Hbnb/app/data/{file_name}"
+        self.path = f"/root/Holbertonschool_New_Hbnb_part1_file_storage/app/data/{file_name}"
         self._storage = {}
 
         if not os.path.exists(self.path):
